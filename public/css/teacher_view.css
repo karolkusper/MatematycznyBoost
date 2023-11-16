@@ -1,0 +1,118 @@
+.give_new_task {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 2vh;
+}
+
+.upload > input {
+  background-color: #829bad;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 15px;
+}
+.upload > input::placeholder {
+  color: white;
+  text-align: center;
+}
+
+.upload > input:focus {
+  outline: none;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    #309185 0px 18px 36px -18px inset;
+}
+
+.grade_tasks {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 3vh;
+}
+
+.task {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 3vh;
+}
+
+.task_title {
+  display: flex;
+  justify-content: flex-start;
+  gap: 2vw;
+}
+.task_title a {
+  text-decoration: none;
+  color: #0e4064;
+  font-size: 1.5rem;
+}
+
+.task_title a:hover {
+  color: #1b796e;
+}
+
+.uploaded_file {
+  display: flex;
+  justify-content: flex-start;
+  gap: 2vw;
+  align-items: baseline;
+}
+
+.grade {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2vw;
+}
+.grades {
+  display: flex;
+  justify-content: flex-start;
+  gap: 2vw;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.grades li {
+  display: block;
+}
+
+/* .grades li:not(.selected) {
+  display: none;
+} */
+
+.fa-solid.fa-1 {
+  color: #ec3131;
+  transition: color 0.2s;
+}
+
+.fa-solid.fa-2 {
+  color: #e36129;
+  transition: color 0.2s;
+}
+
+.fa-solid.fa-3 {
+  color: #d4cd2f;
+  transition: color 0.2s;
+}
+
+.fa-solid.fa-4 {
+  color: #76c94f;
+  transition: color 0.2s;
+}
+
+.fa-solid.fa-5 {
+  color: #25a007;
+  transition: color 0.2s;
+}
+
+.fa-solid.fa-1:hover,
+.fa-solid.fa-2:hover,
+.fa-solid.fa-3:hover,
+.fa-solid.fa-4:hover,
+.fa-solid.fa-5:hover {
+  filter: brightness(1.2);
+  cursor: pointer;
+}

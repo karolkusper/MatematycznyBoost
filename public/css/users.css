@@ -1,0 +1,47 @@
+.uczen {
+  display: flex;
+  justify-content: space-around;
+  /* align-items: center; */
+  background-color: #829bad;
+  gap: 5vw;
+  padding-right: 10px;
+  /* max-width: 70vw; */
+}
+.uczen img {
+  max-width: 200px;
+  max-height: auto;
+  display: block;
+}
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 5vh;
+}
+
+.info h2 {
+  color: #304341;
+}
+.info h3 {
+  color: white;
+}
+
+.dane {
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+  gap: 5px;
+}
+
+@media screen and (max-width: 768px) {
+  .content {
+    padding: 0;
+  }
+  .uczen {
+    padding: 0;
+    gap: 1vw;
+  }
+  .dane {
+    font-size: 0.5rem;
+  }
+}

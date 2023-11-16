@@ -1,77 +1,3 @@
-body {
-  margin: 0;
-  background-color: #deeffc;
-  position: relative;
-  overflow-x: hidden;
-}
-nav {
-  display: flex;
-  justify-content: flex-start;
-  gap: 5vw;
-  background-color: #829bad;
-}
-nav > img {
-  max-width: 200px;
-}
-
-.buttons {
-  display: flex;
-  /* justify-content: space-evenly;
-  gap: 2vw; */
-  align-items: center;
-  width: fit-content;
-}
-
-.buttons input {
-  width: fit-content;
-  color: white;
-  background-color: #829bad;
-  border: none;
-  font-size: 1.25rem;
-  text-align: center;
-  font-family: "Inter", sans-serif;
-}
-
-.buttons > #Wyloguj {
-  background-color: #486284;
-  border-radius: 50px;
-  padding: 15px 0;
-}
-
-.buttons input:hover {
-  color: #ddd;
-  cursor: pointer;
-}
-
-.buttons > #Wyloguj:hover {
-  background-color: #375273;
-}
-
-.backgroundImg {
-  position: absolute;
-  max-width: 70%;
-  z-index: -1;
-  opacity: 0.5;
-  top: 0;
-  right: -10vw;
-}
-
-#title {
-  text-align: center;
-  color: #0e4064;
-  font-family: "Inter", sans-serif;
-  margin: 5vh 0;
-}
-
-.content {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  gap: 5vh;
-  align-items: flex-start;
-  margin-left: 5vw;
-}
-
 .exercise_not_done {
   display: flex;
   flex-direction: column;
@@ -85,27 +11,10 @@ nav > img {
   gap: 15px;
   font-size: 1.5em;
 }
-.check {
-  transform: scale(2);
-  /* margin-left: 2vw; */
-}
 
-.upload {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  gap: 5px;
-  align-items: center;
-  background-color: #829bad7c;
-  border: 1px dashed #0e4064;
-  padding: 10px 15vw;
-}
-
-.upload h2 {
-  color: #0e4064;
-}
-.upload h3 {
-  color: rgb(82, 82, 82);
+.exercise_not_done i {
+  font-size: 2em;
+  color: #1b796e;
 }
 
 .exercise_done {
@@ -131,9 +40,37 @@ nav > img {
   justify-content: flex-start;
   gap: 2vh;
 }
+.uploaded_file {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1vw;
+  align-items: center;
+}
 .grade {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   gap: 2vh;
+}
+
+.exercise_title a {
+  text-decoration: none;
+  color: #0e4064;
+  font-size: 1.5rem;
+}
+
+.exercise_title a:hover {
+  color: #1b796e;
+}
+
+@media screen and (max-width: 768px) {
+  /* Zmniejszenie czcionki dla elementów w sekcji .content */
+  .exercise_title,
+  .check,
+  .upload h2,
+  .upload h3,
+  .exercise_done h2,
+  .exercise_done h3 {
+    font-size: 1rem;
+  }
 }
