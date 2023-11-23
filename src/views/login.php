@@ -18,12 +18,12 @@
       <img src="public/img/login.png" alt="obrazek" class="obrazek_w_tle" />
 
       <div class="login_box">
-        <form>
+        <form class="login" action="login" method="POST">
           <div class="inputs">
-            <input placeholder="email" />
-            <input type="password" placeholder="password" />
+            <input name="email" type="text" placeholder="email" />
+            <input name="password" type="password" placeholder="password" />
           </div>
-          <button class="Log_in">Log in</button>
+          <button type="submit" class="Log_in">Log in</button>
         </form>
 
         <div class="h">
