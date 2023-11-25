@@ -19,6 +19,18 @@
 
       <div class="login_box">
         <form class="login" action="login" method="POST">
+            <div class="message">
+                <?
+                if(isset($messages))
+                {
+                    foreach ($messages as $message)
+                    {
+                        echo $message;
+                    }
+                }
+
+                ?>
+            </div>
           <div class="inputs">
             <input name="email" type="text" placeholder="email" />
             <input name="password" type="password" placeholder="password" />
