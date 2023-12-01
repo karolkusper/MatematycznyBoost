@@ -18,14 +18,14 @@
       <img src="public/img/register.png" alt="obrazek" class="obrazek_w_tle" />
 
       <div class="register_box">
-        <form>
+        <form action="register" method="POST">
           <div class="inputs">
             <input placeholder="username" />
             <input placeholder="email" />
             <input type="password" placeholder="password" />
             <input type="password" placeholder="confirm password" />
           </div>
-          <button class="register">Register</button>
+          <button class="register" type="submit">Register</button>
         </form>
 
         <div class="h">
