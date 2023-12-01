@@ -37,6 +37,11 @@ body {
   font-weight: 600;
 }
 
+.message{
+  color:white;
+  font-size: 1.5em;
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -56,12 +61,19 @@ form {
   color: white;
   border-style: none;
   border-bottom: white solid 0.1em;
+  /*box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, #309185 0px 18px 36px -18px inset;*/
   font-size: 1.5em;
   font-weight: 100;
 }
 ::placeholder {
   color: white;
 }
+
+/*.inputs input:focus {*/
+/*  outline: none; !* Usunięcie domyślnej obramowania *!*/
+/*  border-style:none;*/
+/*  !*box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, #309185 0px 18px 36px -18px inset;*!*/
+/*}*/
 
 .Log_in {
   background-color: #304341;

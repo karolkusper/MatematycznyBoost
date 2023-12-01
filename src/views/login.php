@@ -19,16 +19,14 @@
 
       <div class="login_box">
         <form class="login" action="login" method="POST">
-            <div class="message">
+            <div class="message"
+                 style="color:#304341;font-size: 1.5rem;">
                 <?
-                if(isset($messages))
-                {
-                    foreach ($messages as $message)
-                    {
+                if (isset($messages)) {
+                    foreach ($messages as $message) {
                         echo $message;
                     }
                 }
-
                 ?>
             </div>
           <div class="inputs">

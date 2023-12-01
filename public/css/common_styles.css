@@ -154,6 +154,7 @@ h3 {
   color: #309185;
 }
 
+
 @media screen and (max-width: 768px) {
   .backgroundImg {
     display: none;
