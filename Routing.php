@@ -27,7 +27,7 @@ public static function run($url)
       $error = new ErrorController();
       return $error->FileNotFound();
     }
-    //todo call controller method
+
     $controller = self::$routes[$action];
     $object = new $controller;
 
