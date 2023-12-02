@@ -4,15 +4,15 @@ class User{
 
     private $email;
     private $hashedPassword;
-    private $name;
-    private $surname;
+    private $username;
+//    private $surname;
 
-    public function __construct(string $email, string $password, string $name, string $surname)
+    public function __construct(string $email, string $password, string $username /*, string $surname*/)
     {
         $this->email = $email;
         $this->hashedPassword = password_hash($password,PASSWORD_BCRYPT);
-        $this->name = $name;
-        $this->surname = $surname;
+        $this->username = $username;
+//        $this->surname = $surname;
     }
 
     public function getEmail(): string
@@ -35,25 +35,38 @@ class User{
         $this->password = $password;
     }
 
-    public function getName(): string
+
+    public function getUsername():string
     {
-        return $this->name;
+        return $this->username;
     }
 
-    public function setName(string $name)
+
+    public function setUsername($username)
     {
-        $this->name = $name;
+        $this->username = $username;
     }
 
-    public function getSurname(): string
-    {
-        return $this->surname;
-    }
 
-    public function setSurname(string $surname)
-    {
-        $this->surname = $surname;
-    }
+//    public function getName(): string
+//    {
+//        return $this->name;
+//    }
+//
+//    public function setName(string $name)
+//    {
+//        $this->name = $name;
+//    }
+//
+//    public function getSurname(): string
+//    {
+//        return $this->surname;
+//    }
+//
+//    public function setSurname(string $surname)
+//    {
+//        $this->surname = $surname;
+//    }
 
 
 

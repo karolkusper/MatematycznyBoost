@@ -19,11 +19,21 @@
 
       <div class="register_box">
         <form action="register" method="POST">
+            <div class="message"
+                 style="color:#304341;font-size: 1.5rem;">
+                <?
+                if (isset($messages)) {
+                    foreach ($messages as $message) {
+                        echo $message;
+                    }
+                }
+                ?>
+            </div>
           <div class="inputs">
-            <input placeholder="username" />
-            <input placeholder="email" />
-            <input type="password" placeholder="password" />
-            <input type="password" placeholder="confirm password" />
+            <input name="username" placeholder="username" />
+            <input name="email" placeholder="email" />
+            <input name="password" type="password" placeholder="password" />
+            <input name="confirmed" type="password" placeholder="confirm password" />
           </div>
           <button class="register" type="submit">Register</button>
         </form>
