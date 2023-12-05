@@ -44,11 +44,23 @@
       <div class="content">
         <div class="give_new_task">
           <h2>Zadaj nowe zadania</h2>
-          <div class="upload">
-            <input type="text" placeholder="Tytuł zadania" />
-            <i class="fa-solid fa-file-arrow-up"></i>
+          <form class="upload" action="addExercise" enctype="multipart/form-data">
+              <div class="message"
+                   style="color:#304341;font-size: 1.5rem;">
+                  <?
+                  if (isset($messages)) {
+                      foreach ($messages as $message) {
+                          echo $message;
+                      }
+                  }
+                  ?>
+              </div>
+            <input name="title" type="text" placeholder="Tytuł zadania" />
+            <textarea name="description" rows="5" placeholder="Opis zadania"></textarea>
+            <input type="file" name="file">
+            <button type="submit">Wyślij plik <i class="fa-solid fa-file-arrow-up"></i></button>
             <h3>Dodaj plik z zadaniem.</h3>
-          </div>
+          </form>
         </div>
 
         <div class="grade_tasks">

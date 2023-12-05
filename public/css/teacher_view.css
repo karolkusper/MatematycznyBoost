@@ -5,7 +5,7 @@
   gap: 2vh;
 }
 
-.upload > input {
+.upload > input,textarea {
   background-color: #829bad;
   color: white;
   border: none;

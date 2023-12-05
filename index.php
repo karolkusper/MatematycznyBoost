@@ -16,6 +16,7 @@ Routing::get('users',"DefaultController");
 Routing::get('FileNotFound',"ErrorController");
 Routing::post('login', 'SecurityController');
 Routing::post('register', 'SecurityController');
+Routing::post('addExercise', 'ExerciseController');
 
 Routing::run($path);
 
