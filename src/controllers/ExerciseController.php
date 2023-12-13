@@ -2,12 +2,13 @@
 
 require_once 'AppController.php';
 //require_once __DIR__ .'/../models/User.php';
+require_once __DIR__ .'/../models/Exercise.php';
 class ExerciseController extends AppController
 {
    private $messages = [];
    const MAX_FILE_SIZE = 1024*1024;
-   const SUPPORTED_TYPES = ['image/png','image/jpeg','.pdf'];
-   const UPLOAD_DIRECTORY = '../public/uploads';
+   const SUPPORTED_TYPES = ['image/png','image/jpeg','.pdf','.txt'];
+   const UPLOAD_DIRECTORY = '/../public/uploads/';
     public function addExercise()
     {
         if($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file']))
@@ -18,6 +19,9 @@ class ExerciseController extends AppController
                 dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']
             );
 
+            //$exercise = new Exercise($_POST('title'),$_POST('description'),$_FILES['file']['name']);
+
+//            return $this->render('teacher_view',['messages'=>$this->messages,'exercise'=>$exercise]);
             return $this->render('teacher_view',['messages'=>$this->messages]);
         }
 

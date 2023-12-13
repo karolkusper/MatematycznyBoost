@@ -44,7 +44,7 @@
       <div class="content">
         <div class="give_new_task">
           <h2>Zadaj nowe zadania</h2>
-          <form class="upload" action="addExercise" enctype="multipart/form-data">
+          <form class="upload" method="POST" action="addExercise" enctype="multipart/form-data">
               <div class="message"
                    style="color:#304341;font-size: 1.5rem;">
                   <?
@@ -73,6 +73,19 @@
               <h2>Zamieszczone rozwiązanie:</h2>
               <i class="fa-solid fa-file-arrow-down"></i>
             </div>
+<!--              <div class="task_desc">-->
+<!--                  <p>Title: --><?// if (isset($exercise)) {
+//                          $exercise->getTitle();
+//                      }?><!--</p>-->
+<!---->
+<!--                  <p>Description: --><?// if (isset($exercise)) {
+//                          $exercise->getDesctiption();
+//                      }?><!--</p>-->
+<!---->
+<!--                  <p>Exercise: --><?// if (isset($exercise)) {
+//                          $exercise->getExercise();
+//                      }?><!--</p>-->
+<!--              </div>-->
           </div>
           <div class="grade">
             <h2>Wystaw ocene:</h2>

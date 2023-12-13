@@ -33,7 +33,6 @@ class AppController{
             $output = ob_get_clean();
         }
 
-        // todo elsa z wczytaniem strony z bledem
 
         print $output;
     }
