@@ -1,6 +1,8 @@
 <?php
 
 require_once 'AppController.php';
+require_once __DIR__."/../models/User.php";
+require_once __DIR__.'/../repository/UserRepository.php';
 
 
 class SecurityController extends AppController {
@@ -16,63 +18,31 @@ class SecurityController extends AppController {
     }
     public function login()
     {
-        //nie ma jeszcze bazy danych wiec dodajemy uzytkownika na sztywno
-        //$user = new User("dwight.shrute@theoffice.com","beets","Dwight","Schrute");
-
-        if(!$this->isPost())
-        {
+        if (!$this->isPost()) {
             $this->render("login");
         }
+
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-//        if($user->getEmail()!==$email)
-//        {
-//            return $this->render('login',['messages'=>['User with this email does not exist!']]);
-//        }
-//        if(!password_verify($password,$user->getHashedPassword()))
-//        {
-//            return $this->render('login',["messages"=>['Wrong password!']]);
-//        }
+        $userRepository = new UserRepository();
+        $loggedInUser = $userRepository->getUserByEmail($email);
 
-//        $userFound = false;
-//        foreach (self::$users as $storedUser) {
-//            if ($storedUser->getEmail() === $email) {
-//                $userFound = true;
-//                if (!password_verify($password, $storedUser->getHashedPassword())) {
-//                    return $this->render('login', ["messages" => ['Wrong password!']]);
-//                }
-//                break;
-//            }
-//        }
-//        var_dump(self::$users);
-//        if(!array_key_exists($email,self::$users))
-//        {
-//            return $this->render('login',['messages'=>['User with this email does not exist!']]);
-//
-//        }
-//
-//        if(!password_verify($password,self::$users[$email]->getHashedPassword()))
-//        {
-//
-//            return $this->render('login',["messages"=>['Wrong password!']]);
-//        }
-        //var_dump($_SESSION['users']); // Add this line for debugging
-
-        if (!array_key_exists($email, $_SESSION['users'])) {
+        if (!$loggedInUser) {
             return $this->render('login', ['messages' => ['User with this email does not exist!']]);
         }
 
-        if (!password_verify($password, $_SESSION['users'][$email]->getHashedPassword())) {
+        if (!password_verify($password, $loggedInUser->getHashedPassword())) {
             return $this->render('login', ["messages" => ['Wrong password!']]);
         }
 
-        //return $this->render('user_view');
+        $_SESSION['user'] = $loggedInUser;
+
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/user_view");
     }
 
-    public function register()
+        public function register()
     {
         if (!$this->isPost()) {
             $this->render("register");
@@ -92,7 +62,13 @@ class SecurityController extends AppController {
             return $this->render('register', ['messages' => ["Confirmed password is different than the first one"]]);
         }
 
-        $this->addUser($email, $password, $username);
+        $userRepository = new UserRepository();
+        $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+        $success = $userRepository->addUser($email, $hashedPassword, $username);
+
+        if (!$success) {
+            return $this->render('register', ['messages' => ["Error adding user to the database"]]);
+        }
 
         return $this->render('login');
     }
