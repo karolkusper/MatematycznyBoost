@@ -1,7 +1,6 @@
 <?php
 
 class User{
-
     private $email;
     private $hashedPassword;
     private $username;
