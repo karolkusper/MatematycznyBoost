@@ -21,8 +21,8 @@
         <form action="register" method="POST">
             <div class="message"
                  style="color:#304341;font-size: 1.5rem;">
-                <?
-                if (isset($messages)) {
+                <?php
+                if (isset($messages) && is_array($messages) && !empty($messages)) {
                     foreach ($messages as $message) {
                         echo $message;
                     }
