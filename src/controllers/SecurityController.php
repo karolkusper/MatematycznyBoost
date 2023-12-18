@@ -3,7 +3,7 @@
 require_once 'AppController.php';
 require_once __DIR__."/../models/User.php";
 require_once __DIR__.'/../repository/UserRepository.php';
-
+require_once __DIR__.'/../../Routing.php';
 
 
 class SecurityController extends AppController {
@@ -16,12 +16,6 @@ class SecurityController extends AppController {
 
 
 
-//    public function addUser(string $email, string $password, string $username)
-//    {
-//        $user = new User($email, $password, $username);
-//        $_SESSION['users'][$email] = $user;
-//        //var_dump($_SESSION['users']); // Add this line for debugging
-//    }
     public function login()
     {
         if (!$this->isPost()) {
@@ -50,6 +44,8 @@ class SecurityController extends AppController {
             'username' => $loggedInUser->getUsername(),
             // Dodaj inne informacje o użytkowniku, które chcesz przechowywać w sesji
         ];
+
+
 
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/user_view");

@@ -17,6 +17,8 @@ Routing::post('login', 'SecurityController');
 Routing::post('register', 'SecurityController');
 Routing::post('addExercise', 'ExerciseController');
 
+//Routing::get('user_view/{user_id}', "DefaultController");
+
 Routing::run($path);
 
 

@@ -34,7 +34,11 @@
     </nav>
     <script src="public/js/nav_bar.js"></script>
     <div class="container">
-      <h1 id="title">Moje zadania</h1>
+        <?php if (isset($user)): ?>
+            <h1 id="title"><?= $user['username'] ?>: Moje zadania</h1>
+        <?php else: ?>
+            <h1 id="title">Moje zadania</h1>
+        <?php endif; ?>
       <img
         src="public/img/toDo.png"
         alt="obrazek_w_tle"
