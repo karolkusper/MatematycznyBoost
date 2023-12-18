@@ -25,7 +25,7 @@
         <li><a href="#MojProfil">Mój profil</a></li>
         <li><a href="#MojeZadania">Moje zadania</a></li>
         <li><a href="#Blog">Blog</a></li>
-        <li><a href="#Wyloguj" id="Wyloguj">Wyloguj się</a></li>
+        <li><a href="logout" id="Wyloguj">Wyloguj się</a></li>
       </ul>
       <div class="hamburger">
         <i class="fa-solid fa-bars"></i>

@@ -13,11 +13,14 @@ Routing::get('user_view',"DefaultController");
 Routing::get('teacher_view',"DefaultController");
 Routing::get('users',"DefaultController");
 Routing::get('FileNotFound',"ErrorController");
+
+Routing::get('logout', 'SecurityController');
+
 Routing::post('login', 'SecurityController');
 Routing::post('register', 'SecurityController');
 Routing::post('addExercise', 'ExerciseController');
 
-//Routing::get('user_view/{user_id}', "DefaultController");
+
 
 Routing::run($path);
 

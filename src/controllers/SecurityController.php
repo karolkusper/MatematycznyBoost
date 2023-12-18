@@ -93,4 +93,16 @@ class SecurityController extends AppController {
         return $this->render('login');
     }
 
+
+    public function logout() {
+        // Zakończ sesję
+        session_unset();
+        session_destroy();
+
+        // Przekieruj na stronę logowania
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/index");
+        exit();
+    }
+
 }
