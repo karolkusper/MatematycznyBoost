@@ -41,7 +41,7 @@
         <div class="h">
           <h3>Already have an account?</h3>
           <!-- <a href="login.html"><h2>Login Now</h2></a> -->
-          <h2>Login Now</h2>
+            <a href="index"><h2>Login Now</h2></a>
         </div>
       </div>
     </div>

@@ -5,14 +5,17 @@ class User{
     private $email;
     private $password;
     private $username;
+
+    private $role;
 //    private $surname;
 
-    public function __construct(int $id, string $email, string $password, string $username /*, string $surname*/)
+    public function __construct(int $id, string $email, string $password, string $username,string $role /*, string $surname*/)
     {
         $this->id=$id;
         $this->email = $email;
         $this->password = $password;
         $this->username = $username;
+        $this->role=$role;
 //        $this->surname = $surname;
     }
 
@@ -38,6 +41,13 @@ class User{
     {
         return $this->username;
     }
+
+    public function getRole(): string
+    {
+        return $this->role;
+    }
+
+
 
 
 

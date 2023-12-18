@@ -38,7 +38,7 @@
 
         <div class="h">
           <h3>Don't have an account?</h3>
-          <h2>Create an Account</h2>
+            <a href="register"><h2>Create an Account</h2></a>
         </div>
       </div>
     </div>

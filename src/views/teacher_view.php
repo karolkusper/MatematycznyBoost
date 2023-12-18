@@ -26,7 +26,7 @@
         <li><a href="#MojProfil">Mój profil</a></li>
         <li><a href="#Uczniowie">Uczniowie</a></li>
         <li><a href="#Blog">Blog</a></li>
-        <li><a href="#Wyloguj" id="Wyloguj">Wyloguj się</a></li>
+        <li><a href="logout" id="Wyloguj">Wyloguj się</a></li>
       </ul>
       <div class="hamburger">
         <i class="fa-solid fa-bars"></i>
@@ -40,7 +40,11 @@
         alt="obrazek_w_tle"
         class="backgroundImg"
       />
-      <h1 id="title">Zadania ucznia username</h1>
+        <?php if (isset($user)): ?>
+            <h1 id="title"><?= $user['username'] ?>: Zadania ucznia username</h1>
+        <?php else: ?>
+            <h1 id="title">Zadania ucznia username</h1>
+        <?php endif; ?>
       <div class="content">
         <div class="give_new_task">
           <h2>Zadaj nowe zadania</h2>

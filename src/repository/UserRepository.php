@@ -21,7 +21,8 @@ class UserRepository extends Repository
                 $userData['user_id'],
                 $userData['email'],
                 $userData['password_hash'],
-                $userData['username']
+                $userData['username'],
+                $userData['role']
             // Dodaj inne pola, jeśli są dostępne w tabeli users
             );
         } catch (PDOException $e) {

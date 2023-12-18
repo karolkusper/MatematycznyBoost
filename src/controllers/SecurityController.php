@@ -42,13 +42,21 @@ class SecurityController extends AppController {
             'id' => $loggedInUser->getId(),
             'email' => $loggedInUser->getEmail(),
             'username' => $loggedInUser->getUsername(),
+            'role'=>$loggedInUser->getRole()
             // Dodaj inne informacje o użytkowniku, które chcesz przechowywać w sesji
         ];
 
 
+        if($loggedInUser->getRole()==="student")
+        {
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/user_view");
+        }
+        else{
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/teacher_view");
+        }
 
-        $url = "http://$_SERVER[HTTP_HOST]";
-        header("Location: {$url}/user_view");
     }
 
 
