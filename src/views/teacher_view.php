@@ -40,7 +40,9 @@
         alt="obrazek_w_tle"
         class="backgroundImg"
       />
-        <?php if (isset($user)): ?>
+        <?php
+        $user=$_SESSION['user'];
+        if (isset($user)): ?>
             <h1 id="title"><?= $user['username'] ?>: Zadania ucznia username</h1>
         <?php else: ?>
             <h1 id="title">Zadania ucznia username</h1>

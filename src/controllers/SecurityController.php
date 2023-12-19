@@ -53,8 +53,10 @@ class SecurityController extends AppController {
             header("Location: {$url}/user_view");
         }
         else{
-            $url = "http://$_SERVER[HTTP_HOST]";
-            header("Location: {$url}/teacher_view");
+//            $url = "http://$_SERVER[HTTP_HOST]";
+//            header("Location: {$url}/teacher_view");
+            // Przed zwróceniem widoku teacher_view
+            return $this->render('teacher_view', ['user' => $_SESSION['user']]);
         }
 
     }

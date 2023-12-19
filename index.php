@@ -1,8 +1,7 @@
 <?php
+session_start(); // Start the session
 require 'src/models/User.php';
 require 'Routing.php';
-session_start(); // Start the session
-
 
 $path = trim($_SERVER['REQUEST_URI'],'/'); //_SERVER to zmienna glopalna ktora zawiera sciezke z paska url
 $path = parse_url($path,PHP_URL_PATH);
@@ -18,7 +17,7 @@ Routing::get('logout', 'SecurityController');
 
 Routing::post('login', 'SecurityController');
 Routing::post('register', 'SecurityController');
-Routing::post('addExercise', 'ExerciseController');
+Routing::post('addExercise', 'HomeworkController');
 
 
 
