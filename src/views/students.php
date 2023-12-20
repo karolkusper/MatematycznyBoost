@@ -55,7 +55,7 @@
           if(isset($students))
           foreach($students as $student): ?>
           <div class="uczen">
-          <img src="public/img/profie1.jpg" alt="zdj profilowe ucznia" />
+          <img src="/public/uploads/usersPhotos/profile<?= $student->getId() ?>.jpg" alt="zdj profilowe ucznia" />
           <div class="info">
             <div class="dane username">
               <i class="fa-solid fa-user"></i>
@@ -78,53 +78,7 @@
           </div>
         </div>
           <?php endforeach; ?>
-<!--        <div class="uczen">-->
-<!--          <img src="public/img/profile2.jpg" alt="zdj profilowe ucznia" />-->
-<!--          <div class="info">-->
-<!--            <div class="dane username">-->
-<!--              <i class="fa-solid fa-user"></i>-->
-<!--              <h2>Username:</h2>-->
-<!--              <h3>User2</h3>-->
-<!--            </div>-->
-<!--            <div class="dane email">-->
-<!--              <i class="fa-solid fa-envelope"></i>-->
-<!--              <h2>email:</h2>-->
-<!--              <h3>user2@email.com</h3>-->
-<!--            </div>-->
-<!--            <div class="dane zadania">-->
-<!--              <i class="fa-solid fa-list-check"></i>-->
-<!--              <h2>Zadania ucznia</h2>-->
-<!--            </div>-->
-<!--            <div class="dane usunUcznia">-->
-<!--              <i class="fa-solid fa-user-xmark"></i>-->
-<!--              <h2>Usuń ucznia</h2>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!---->
-<!--        <div class="uczen">-->
-<!--          <img src="public/img/profile3.jpg" alt="zdj profilowe ucznia" />-->
-<!--          <div class="info">-->
-<!--            <div class="dane username">-->
-<!--              <i class="fa-solid fa-user"></i>-->
-<!--              <h2>Username:</h2>-->
-<!--              <h3>User3</h3>-->
-<!--            </div>-->
-<!--            <div class="dane email">-->
-<!--              <i class="fa-solid fa-envelope"></i>-->
-<!--              <h2>email:</h2>-->
-<!--              <h3>user3@email.com</h3>-->
-<!--            </div>-->
-<!--            <div class="dane zadania">-->
-<!--              <i class="fa-solid fa-list-check"></i>-->
-<!--              <h2>Zadania ucznia</h2>-->
-<!--            </div>-->
-<!--            <div class="dane usunUcznia">-->
-<!--              <i class="fa-solid fa-user-xmark"></i>-->
-<!--              <h2>Usuń ucznia</h2>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
+
       </div>
     </div>
   </body>
