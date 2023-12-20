@@ -56,7 +56,8 @@ class SecurityController extends AppController {
 //            $url = "http://$_SERVER[HTTP_HOST]";
 //            header("Location: {$url}/teacher_view");
             // Przed zwróceniem widoku teacher_view
-            return $this->render('teacher_view', ['user' => $_SESSION['user']]);
+            //return $this->render('teacher_view', ['user' => $_SESSION['user']]);
+            return $this->render('students', ["user" => $_SESSION['user'],"students"=>$userRepository->getStudents()]);
         }
 
     }
@@ -84,8 +85,7 @@ class SecurityController extends AppController {
 
         //check if user with this email already exists
         $userRepository=new userRepository();
-//        $userExists=$this->userRepository->getUserByEmail($email);
-            $userExists=$userRepository->getUserByEmail($email);
+        $userExists=$userRepository->getUserByEmail($email);
         if($userExists)
         {
             return $this->render('register',['messages'=>["User with this email already exists!"]]);

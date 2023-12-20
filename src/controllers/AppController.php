@@ -36,4 +36,17 @@ class AppController{
 
         print $output;
     }
+
+    protected function isLoggedIn()
+    {
+        // Sprawdź, czy użytkownik jest zalogowany
+        if (!isset($_SESSION['user'])) {
+            // Jeśli użytkownik nie jest zalogowany, przekieruj na stronę logowania
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/login");
+            exit();
+        }
+    }
+
+
 }

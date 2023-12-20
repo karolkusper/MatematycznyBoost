@@ -17,13 +17,7 @@ class DefaultController extends AppController
 
     public function user_view()
     {
-        // Sprawdź, czy użytkownik jest zalogowany
-        if (!isset($_SESSION['user'])) {
-            // Jeśli użytkownik nie jest zalogowany, przekieruj na stronę logowania
-            $url = "http://$_SERVER[HTTP_HOST]";
-            header("Location: {$url}/login");
-            exit();
-        }
+        $this->isLoggedIn();
 
         // Odczytaj dane użytkownika bezpośrednio z sesji
         $user = $_SESSION['user'];
@@ -36,12 +30,7 @@ class DefaultController extends AppController
      public function teacher_view()
     {
         // Sprawdź, czy użytkownik jest zalogowany
-        if (!isset($_SESSION['user'])) {
-            // Jeśli użytkownik nie jest zalogowany, przekieruj na stronę logowania
-            $url = "http://$_SERVER[HTTP_HOST]";
-            header("Location: {$url}/login");
-            exit();
-        }
+        $this->isLoggedIn();
 
         // Odczytaj dane użytkownika bezpośrednio z sesji
         $user = $_SESSION['user'];
@@ -49,8 +38,15 @@ class DefaultController extends AppController
         // Renderuj widok user_view, przekazując dane użytkownika do widoku
         $this->render('teacher_view', ['user' => $user]);
     }
-     public function users()
+     public function students()
     {
-        $this->render('users');
+        // Sprawdź, czy użytkownik jest zalogowany
+        $this->isLoggedIn();
+
+        // Odczytaj dane użytkownika bezpośrednio z sesji
+        $user = $_SESSION['user'];
+        $userRepo = new UserRepository();
+
+        $this->render('students',['user' => $user,"students"=>$userRepo->getStudents()]);
     }
 }

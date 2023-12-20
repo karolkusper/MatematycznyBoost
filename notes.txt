@@ -1,0 +1,2 @@
+// zrobic ustawienie student_id po kliknieciu w studenta w zakladce students
+// wyswitlenie zadan konkretnego studenta z bazy danych

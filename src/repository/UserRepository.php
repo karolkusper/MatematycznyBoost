@@ -45,4 +45,34 @@ class UserRepository extends Repository
             die('Database error: ' . $e->getMessage());
         }
     }
+
+
+    public function getStudents(){
+        try{
+            $result=[];
+            $stmt = $this->database->connect()->prepare('SELECT * FROM users WHERE role=?');
+            $stmt->execute(["student"]);
+
+            $students = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            foreach ($students as $student)
+            {
+                $result[]=new User(
+                    $student['user_id'],
+                    $student['email'],
+                    $student['password_hash'],
+                    $student['username'],
+                    $student['role']
+                    );
+            }
+
+            return $result;
+
+        }
+        catch(PDOException $e)
+        {
+            // Obsługa błędów związanych z bazą danych
+            die('Database error: ' . $e->getMessage());
+        }
+    }
 }

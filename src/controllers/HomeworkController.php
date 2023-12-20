@@ -36,6 +36,15 @@ class HomeworkController extends AppController
                 $homeworkRepo = new HomeworkRepository();
 
                 $teacherId = (int)$user['id'];
+
+                //to do
+
+                //zrobić wchodzenie do uczniowie po zalogowaniu przez nauczyciela
+
+                //po wejsciu na ucznia ustawic assign_to na id danego studenta
+
+               // $assignTo = (int)$student['id']; //to trzeba zakodować
+
                 $title = $_POST['title'];
                 $description = $_POST['description'];
 
