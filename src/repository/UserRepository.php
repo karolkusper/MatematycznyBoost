@@ -75,4 +75,29 @@ class UserRepository extends Repository
             die('Database error: ' . $e->getMessage());
         }
     }
+
+    public function getStudentById(int $studentId)
+    {
+        try {
+            $stmt = $this->database->connect()->prepare('SELECT * FROM users WHERE user_id = ?');
+            $stmt->execute([$studentId]);
+            $userData = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if (!$userData) {
+                return null; // Użytkownik o podanym id nie istnieje
+            }
+
+            return new User(
+                $userData['user_id'],
+                $userData['email'],
+                $userData['password_hash'],
+                $userData['username'],
+                $userData['role']
+            // Dodaj inne pola, jeśli są dostępne w tabeli users
+            );
+        } catch (PDOException $e) {
+            // Obsługa błędów związanych z bazą danych
+            die('Database error: ' . $e->getMessage());
+        }
+    }
 }

@@ -69,7 +69,8 @@
             </div>
             <div class="dane zadania">
               <i class="fa-solid fa-list-check"></i>
-              <h2>Zadania ucznia</h2>
+<!--              <h2>Zadania ucznia</h2>-->
+            <a href="teacher_view?student_id=<?= $student->getId() ?>"><h2>Zadania ucznia</h2></a>
             </div>
             <div class="dane usunUcznia">
               <i class="fa-solid fa-user-xmark"></i>

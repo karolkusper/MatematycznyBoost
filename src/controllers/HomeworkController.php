@@ -35,26 +35,25 @@ class HomeworkController extends AppController
 
                 $homeworkRepo = new HomeworkRepository();
 
-                $teacherId = (int)$user['id'];
+                $teacherId=(int)$user['id'];
+                // Odczytaj student_id z danych POST
+                $assignTo = $_POST['student_id'] ?? null;
 
-                //to do
-
-                //zrobić wchodzenie do uczniowie po zalogowaniu przez nauczyciela
-
-                //po wejsciu na ucznia ustawic assign_to na id danego studenta
-
-               // $assignTo = (int)$student['id']; //to trzeba zakodować
 
                 $title = $_POST['title'];
                 $description = $_POST['description'];
 
-                $success = $homeworkRepo->addHomework($teacherId, $title, $description, $taskPath);
+                $success = $homeworkRepo->addHomework($teacherId,$assignTo, $title, $description, $taskPath);
 
                 if (!$success) {
                     return $this->render('teacher_view', ['messages' => ["Error adding user to the database"]]);
                 }
 
-                return $this->render('teacher_view');
+//                return $this->render('teacher_view');
+                // Przekieruj do teacher_view w DefaultController
+                $url = "http://$_SERVER[HTTP_HOST]";
+                header("Location: {$url}/teacher_view?student_id=$assignTo");
+                exit();
             }
 
             return $this->render('teacher_view',['messages'=>$this->messages]);

@@ -29,14 +29,21 @@ class DefaultController extends AppController
     
      public function teacher_view()
     {
+        // Pobierz student_id z parametrów URL
+        $studentId = $_GET['student_id'] ?? null;
         // Sprawdź, czy użytkownik jest zalogowany
         $this->isLoggedIn();
 
         // Odczytaj dane użytkownika bezpośrednio z sesji
         $user = $_SESSION['user'];
+        $userRepo = new UserRepository();
+        $student = $userRepo->getStudentById($studentId);
+
+        $homeworkRepo = new HomeworkRepository();
+        $homework = $homeworkRepo->getHomeworksOfStudent($studentId);
 
         // Renderuj widok user_view, przekazując dane użytkownika do widoku
-        $this->render('teacher_view', ['user' => $user]);
+        $this->render('teacher_view', ['user' => $user,'student'=>$student,'homeworks'=>$homework]);
     }
      public function students()
     {

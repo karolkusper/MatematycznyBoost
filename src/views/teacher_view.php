@@ -24,7 +24,7 @@
       <img src="public/img/logo.png" alt="logo" />
       <ul class="buttons">
         <li><a href="#MojProfil">Mój profil</a></li>
-        <li><a href="#Uczniowie">Uczniowie</a></li>
+        <li><a href="students">Uczniowie</a></li>
         <li><a href="#Blog">Blog</a></li>
         <li><a href="logout" id="Wyloguj">Wyloguj się</a></li>
       </ul>
@@ -42,8 +42,8 @@
       />
         <?php
         $user=$_SESSION['user'];
-        if (isset($user)): ?>
-            <h1 id="title"><?= $user['username'] ?>: Zadania ucznia username</h1>
+        if (isset($user)&&isset($student)): ?>
+            <h1 id="title"><?= $user['username'] ?>: Zadania ucznia <?= $student->getUsername()?></h1>
         <?php else: ?>
             <h1 id="title">Zadania ucznia username</h1>
         <?php endif; ?>
@@ -61,6 +61,7 @@
                   }
                   ?>
               </div>
+            <input type="hidden" name="student_id" value="<?= $student->getId() ?>"><!-- Dodaj ukryte pole z id studenta -->
             <input name="title" type="text" placeholder="Tytuł zadania" />
             <textarea name="description" rows="5" placeholder="Opis zadania"></textarea>
             <input type="file" name="file">
@@ -69,52 +70,20 @@
           </form>
         </div>
 
+          <?php
+          if(isset($homeworks))
+              foreach($homeworks as $homework): ?>
         <div class="grade_tasks">
           <div class="task">
             <div class="task_title">
               <input type="checkbox" class="check" />
-              <a href="#">Zadanie 1</a>
+              <a href="#"><?= $homework->getTitle()?></a>
             </div>
             <div class="uploaded_file">
               <h2>Zamieszczone rozwiązanie:</h2>
               <i class="fa-solid fa-file-arrow-down"></i>
             </div>
-<!--              <div class="task_desc">-->
-<!--                  <p>Title: --><?// if (isset($exercise)) {
-//                          $exercise->getTitle();
-//                      }?><!--</p>-->
-<!---->
-<!--                  <p>Description: --><?// if (isset($exercise)) {
-//                          $exercise->getDesctiption();
-//                      }?><!--</p>-->
-<!---->
-<!--                  <p>Exercise: --><?// if (isset($exercise)) {
-//                          $exercise->getExercise();
-//                      }?><!--</p>-->
-<!--              </div>-->
-          </div>
-          <div class="grade">
-            <h2>Wystaw ocene:</h2>
-            <ul class="grades">
-              <li><i class="fa-solid fa-1" id="grade-1"></i></li>
-              <li><i class="fa-solid fa-2" id="grade-2"></i></li>
-              <li><i class="fa-solid fa-3" id="grade-3"></i></li>
-              <li><i class="fa-solid fa-4" id="grade-4"></i></li>
-              <li><i class="fa-solid fa-5" id="grade-5"></i></li>
-            </ul>
-          </div>
-        </div>
 
-        <div class="grade_tasks">
-          <div class="task">
-            <div class="task_title">
-              <input type="checkbox" class="check" />
-              <a href="#">Zadanie 2</a>
-            </div>
-            <div class="uploaded_file">
-              <h2>Zamieszczone rozwiązanie:</h2>
-              <i class="fa-solid fa-file-arrow-down"></i>
-            </div>
           </div>
           <div class="grade">
             <h2>Wystaw ocene:</h2>
@@ -127,29 +96,52 @@
             </ul>
           </div>
         </div>
-
-        <div class="grade_tasks">
-          <div class="task">
-            <div class="task_title">
-              <input type="checkbox" class="check" />
-              <a href="#">Zadanie 3</a>
-            </div>
-            <div class="uploaded_file">
-              <h2>Zamieszczone rozwiązanie:</h2>
-              <i class="fa-solid fa-file-arrow-down"></i>
-            </div>
-          </div>
-          <div class="grade">
-            <h2>Wystaw ocene:</h2>
-            <ul class="grades">
-              <li><i class="fa-solid fa-1" id="grade-1"></i></li>
-              <li><i class="fa-solid fa-2" id="grade-2"></i></li>
-              <li><i class="fa-solid fa-3" id="grade-3"></i></li>
-              <li><i class="fa-solid fa-4" id="grade-4"></i></li>
-              <li><i class="fa-solid fa-5" id="grade-5"></i></li>
-            </ul>
-          </div>
-        </div>
+              <?php endforeach; ?>
+<!--        <div class="grade_tasks">-->
+<!--          <div class="task">-->
+<!--            <div class="task_title">-->
+<!--              <input type="checkbox" class="check" />-->
+<!--              <a href="#">Zadanie 2</a>-->
+<!--            </div>-->
+<!--            <div class="uploaded_file">-->
+<!--              <h2>Zamieszczone rozwiązanie:</h2>-->
+<!--              <i class="fa-solid fa-file-arrow-down"></i>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="grade">-->
+<!--            <h2>Wystaw ocene:</h2>-->
+<!--            <ul class="grades">-->
+<!--              <li><i class="fa-solid fa-1" id="grade-1"></i></li>-->
+<!--              <li><i class="fa-solid fa-2" id="grade-2"></i></li>-->
+<!--              <li><i class="fa-solid fa-3" id="grade-3"></i></li>-->
+<!--              <li><i class="fa-solid fa-4" id="grade-4"></i></li>-->
+<!--              <li><i class="fa-solid fa-5" id="grade-5"></i></li>-->
+<!--            </ul>-->
+<!--          </div>-->
+<!--        </div>-->
+<!---->
+<!--        <div class="grade_tasks">-->
+<!--          <div class="task">-->
+<!--            <div class="task_title">-->
+<!--              <input type="checkbox" class="check" />-->
+<!--              <a href="#">Zadanie 3</a>-->
+<!--            </div>-->
+<!--            <div class="uploaded_file">-->
+<!--              <h2>Zamieszczone rozwiązanie:</h2>-->
+<!--              <i class="fa-solid fa-file-arrow-down"></i>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="grade">-->
+<!--            <h2>Wystaw ocene:</h2>-->
+<!--            <ul class="grades">-->
+<!--              <li><i class="fa-solid fa-1" id="grade-1"></i></li>-->
+<!--              <li><i class="fa-solid fa-2" id="grade-2"></i></li>-->
+<!--              <li><i class="fa-solid fa-3" id="grade-3"></i></li>-->
+<!--              <li><i class="fa-solid fa-4" id="grade-4"></i></li>-->
+<!--              <li><i class="fa-solid fa-5" id="grade-5"></i></li>-->
+<!--            </ul>-->
+<!--          </div>-->
+<!--        </div>-->
 
         <script src="public/js/grades.js"></script>
       </div>
