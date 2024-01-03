@@ -66,6 +66,7 @@
             <div class="uploaded_file">
               <h2>Zamieszczono rozwiązanie:</h2>
               <i class="fa-solid fa-file-arrow-down"></i>
+                <a target="_blank" href="/public/uploads/homework/to_wyk1.pdf">to_wyk1.pdf</a>
             </div>
           </div>
           <div class="grade">

@@ -24,19 +24,24 @@ class HomeworkRepository extends Repository
             $stmt = $this->database->connect()->prepare('SELECT * FROM homework WHERE assigned_to=?');
             $stmt->execute([$studentId]);
 
-            $homeworks = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $result = $stmt->fetchAll(PDO::FETCH_CLASS, 'Homework');
 
-            foreach ($homeworks as $homework)
-            {
-                $result[]=new Homework(
-                    $homework['teacher_id'],
-                    $homework['assigned_to'],
-                    $homework['title'],
-                    $homework['description'],
-                    $homework['task_path']
-                );
 
-            }
+
+//            $homeworks = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//
+//            foreach ($homeworks as $homework)
+//            {
+//                $result[]=new Homework(
+//                    $homework['teacher_id'],
+//                    $homework['assigned_to'],
+//                    $homework['title'],
+//                    $homework['description'],
+//                    $homework['task_path']
+//                );
+//
+//            }
+            // TODO: add close method
             return $result;
 
         }

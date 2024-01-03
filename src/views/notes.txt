@@ -1,9 +1,1 @@
-flex
-grid
-position fixed
 
-
------------
-trzeba dodać ciastko/sesje po logowaniu
-lepszych metod haszujacych hash_password?
-lab8, lab11
