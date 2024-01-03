@@ -1,10 +1,13 @@
-# WDPAI_Project
+# MatematycznyBoost
 
-A brief description of your project.
+This is a simple web-app for someone who gives math corepetitions online which allows
+to register students, add homeworks and exercises in files.
+Students after login get access to their homeworks and can send solution back to a teacher.
+
 
 ## Table of Contents
 
-- [Project Title](#project-title)
+- [MatematycznyBoost](#project-title)
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)
 - [Features](#features)
@@ -17,16 +20,15 @@ A brief description of your project.
 - [Acknowledgments](#acknowledgments)
 
 ## Introduction
-
-Explain what your project is about and provide context. Describe its purpose and why it's valuable.
+If you conduct online classes and seek a user-friendly application for efficiently managing your students and assignments, then this webpage is tailored for you!
 
 ## Features
 
-List the key features of your project. Use bullet points for clarity.
+Key features of this project:
 
-- Feature 1
-- Feature 2
-- Feature 3
+- Registration and login for students and teachers
+- In teacher site: homework panel for upload homeworks, grade solutions, managing students
+- In student site: access to homework, panel for upload solutions, checking grades
 
 ## Getting Started
 
