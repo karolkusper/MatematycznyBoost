@@ -113,6 +113,8 @@ class SecurityController extends AppController {
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/index");
         exit();
+
+        //sprobowac zwykle return this->render(login)
     }
 
 }

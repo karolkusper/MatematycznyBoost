@@ -31,7 +31,6 @@ class UserRepository extends Repository
         }
     }
 
-    // Dodaj inne funkcje związane z użytkownikami, jeśli są potrzebne
 
     public function addUser(string $email, string $hashedPassword, string $username): bool
     {

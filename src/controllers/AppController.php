@@ -33,7 +33,6 @@ class AppController{
             $output = ob_get_clean();
         }
 
-
         print $output;
     }
 
@@ -42,9 +41,10 @@ class AppController{
         // Sprawdź, czy użytkownik jest zalogowany
         if (!isset($_SESSION['user'])) {
             // Jeśli użytkownik nie jest zalogowany, przekieruj na stronę logowania
-            $url = "http://$_SERVER[HTTP_HOST]";
-            header("Location: {$url}/login");
-            exit();
+//            $url = "http://$_SERVER[HTTP_HOST]";
+//            header("Location: {$url}/login");
+//            exit();
+            return $this->render("login");
         }
     }
 

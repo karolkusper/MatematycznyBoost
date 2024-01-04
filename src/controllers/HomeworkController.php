@@ -25,11 +25,16 @@ class HomeworkController extends AppController
         $user = $_SESSION['user'];
         if (!$this->isFileUploaded()) {
             // Dodaj obsługę przypadku, gdy zmienne sesji nie są ustawione
-            $this->render('teacher_view', ['messages' => ['Session data missing']]);
-            return;
+//            $this->render('teacher_view', ['messages' => ['Session data missing or file not uploaded']]);
+//            return;
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/teacher_view?student_id=".$_POST['student_id']);
         }
 
         $path = $user["role"] === "student" ? self::HOMEWORK_SOLUTIONS_UPLOAD_DIRECTORY : self::HOMEWORK_UPLOAD_DIRECTORY;
+
+
+        //dodac sprawdzenie czy takie zadanie juz nie jest wstawione
 
         move_uploaded_file(
             $_FILES['file']['tmp_name'],
@@ -48,14 +53,14 @@ class HomeworkController extends AppController
 
             $success = $homeworkRepo->addHomework(
                 (int)$user['id'],
-                $assignTo,
+                (int)$assignTo,
                 $_POST['title'],
                 $description,
                 $taskPath
             );
 
             if (!$success) {
-                return $this->render('teacher_view', ['messages' => ["Error adding user to the database"]]);
+                return $this->render('teacher_view', ['messages' => ["Error adding exercise to the database"]]);
             }
 
             // Przekieruj do teacher_view w DefaultController

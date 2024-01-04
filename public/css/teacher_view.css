@@ -37,27 +37,22 @@
   gap: 3vh;
 }
 
-.task_title {
+.task_component {
   display: flex;
   justify-content: flex-start;
+  align-items: baseline;
   gap: 2vw;
 }
-.task_title a {
+.task_component a {
   text-decoration: none;
   color: #0e4064;
   font-size: 1.5rem;
 }
 
-.task_title a:hover {
+.task_component a:hover {
   color: #1b796e;
 }
 
-.uploaded_file {
-  display: flex;
-  justify-content: flex-start;
-  gap: 2vw;
-  align-items: baseline;
-}
 
 .grade {
   display: flex;
