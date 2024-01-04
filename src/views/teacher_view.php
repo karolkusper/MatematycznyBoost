@@ -94,51 +94,7 @@
                     </div>
                 </div>
             <?php endforeach; ?>
-        <!--        <div class="grade_tasks">-->
-        <!--          <div class="task">-->
-        <!--            <div class="task_title">-->
-        <!--              <input type="checkbox" class="check" />-->
-        <!--              <a href="#">Zadanie 2</a>-->
-        <!--            </div>-->
-        <!--            <div class="uploaded_file">-->
-        <!--              <h2>Zamieszczone rozwiązanie:</h2>-->
-        <!--              <i class="fa-solid fa-file-arrow-down"></i>-->
-        <!--            </div>-->
-        <!--          </div>-->
-        <!--          <div class="grade">-->
-        <!--            <h2>Wystaw ocene:</h2>-->
-        <!--            <ul class="grades">-->
-        <!--              <li><i class="fa-solid fa-1" id="grade-1"></i></li>-->
-        <!--              <li><i class="fa-solid fa-2" id="grade-2"></i></li>-->
-        <!--              <li><i class="fa-solid fa-3" id="grade-3"></i></li>-->
-        <!--              <li><i class="fa-solid fa-4" id="grade-4"></i></li>-->
-        <!--              <li><i class="fa-solid fa-5" id="grade-5"></i></li>-->
-        <!--            </ul>-->
-        <!--          </div>-->
-        <!--        </div>-->
-        <!---->
-        <!--        <div class="grade_tasks">-->
-        <!--          <div class="task">-->
-        <!--            <div class="task_title">-->
-        <!--              <input type="checkbox" class="check" />-->
-        <!--              <a href="#">Zadanie 3</a>-->
-        <!--            </div>-->
-        <!--            <div class="uploaded_file">-->
-        <!--              <h2>Zamieszczone rozwiązanie:</h2>-->
-        <!--              <i class="fa-solid fa-file-arrow-down"></i>-->
-        <!--            </div>-->
-        <!--          </div>-->
-        <!--          <div class="grade">-->
-        <!--            <h2>Wystaw ocene:</h2>-->
-        <!--            <ul class="grades">-->
-        <!--              <li><i class="fa-solid fa-1" id="grade-1"></i></li>-->
-        <!--              <li><i class="fa-solid fa-2" id="grade-2"></i></li>-->
-        <!--              <li><i class="fa-solid fa-3" id="grade-3"></i></li>-->
-        <!--              <li><i class="fa-solid fa-4" id="grade-4"></i></li>-->
-        <!--              <li><i class="fa-solid fa-5" id="grade-5"></i></li>-->
-        <!--            </ul>-->
-        <!--          </div>-->
-        <!--        </div>-->
+
 
         <script src="public/js/grades.js"></script>
     </div>
