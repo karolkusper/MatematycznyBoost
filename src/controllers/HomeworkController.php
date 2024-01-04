@@ -27,8 +27,16 @@ class HomeworkController extends AppController
             // Dodaj obsługę przypadku, gdy zmienne sesji nie są ustawione
 //            $this->render('teacher_view', ['messages' => ['Session data missing or file not uploaded']]);
 //            return;
-            $url = "http://$_SERVER[HTTP_HOST]";
-            header("Location: {$url}/teacher_view?student_id=".$_POST['student_id']);
+            if($user['role']==="student")
+            {
+                $this->render('user_view', ['messages' => ['Session data missing or file not uploaded']]);
+            }
+            else{
+//                $url = "http://$_SERVER[HTTP_HOST]";
+//                header("Location: {$url}/teacher_view?student_id=".$_POST['student_id']);
+                $this->render('teacher_view', ['messages' => ['Session data missing or file not uploaded']]);
+            }
+
         }
 
         $path = $user["role"] === "student" ? self::HOMEWORK_SOLUTIONS_UPLOAD_DIRECTORY : self::HOMEWORK_UPLOAD_DIRECTORY;
@@ -67,11 +75,29 @@ class HomeworkController extends AppController
             $url = "http://$_SERVER[HTTP_HOST]";
             header("Location: {$url}/teacher_view?student_id=$assignTo");
         }
+//        else
+//        {
+//            $solutionPath = '/public/uploads/homework_solutions/' . $_FILES['file']['name'];;
+//
+//            $homeworkSolutionRepo = new HomeworkSolutionsRepository();
+//
+//            $success = $homeworkSolutionRepo->addHomeworkSolution(
+//                (int)$user['id'],
+//                (int)$_POST['homework_id'],
+//                $_POST['title'],
+//                $_POST['description'],
+//                $solutionPath
+//            );
+//
+//            if (!$success) {
+//                return $this->render('user_view', ['messages' => ["Error adding solutie to the database"]]);
+//            }
+//
+//            $url = "http://$_SERVER[HTTP_HOST]";
+//            header("Location: {$url}/teacher_view");
+//        }
 
         return $this->render('teacher_view', ['messages' => $this->messages]);
-
-
-        //return $this->render('teacher_view',['messages'=>$this->messages]);
     }
 
     private function validate(array $file): bool

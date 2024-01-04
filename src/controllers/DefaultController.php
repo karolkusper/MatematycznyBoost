@@ -22,8 +22,12 @@ class DefaultController extends AppController
         // Odczytaj dane użytkownika bezpośrednio z sesji
         $user = $_SESSION['user'];
 
+
+        $homeworkRepo = new HomeworkRepository();
+        $homeworks = $homeworkRepo->getHomeworksOfStudent($user['id']);
+
         // Renderuj widok user_view, przekazując dane użytkownika do widoku
-        $this->render('user_view', ['user' => $user]);
+        $this->render('user_view', ['user' => $user,'homeworks'=>$homeworks]);
     }
 
     
