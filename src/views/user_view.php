@@ -55,8 +55,15 @@
                                 </div>
                             </div>
                             <div class="grade">
-                                <h2>Ocena:</h2>
-                                <h3>Nie oceniono</h3>
+                                    <?php if ($solutions[$homework->getHomeworkId()]->getGrade() !== 0): ?>
+                                        <!-- Jeśli ocena już istnieje, wyświetl ikonkę oceny -->
+                                        <h2>Ocena:</h2>
+                                        <i class="fa-solid fa-<?= $solutions[$homework->getHomeworkId()]->getGrade() ?>"></i>
+                                    <?php else: ?>
+                                        <!-- Jeśli nie ma oceny, pozostaw komunikat "Nie oceniono" -->
+                                        <h2>Ocena:</h2>
+                                        <h3>Nie oceniono</h3>
+                                    <?php endif; ?>
                             </div>
                         </div>
                     <?php else: ?>

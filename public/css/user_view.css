@@ -63,6 +63,31 @@
   color: #1b796e;
 }
 
+.fa-solid.fa-1 {
+  color: #ec3131;
+  transition: color 0.2s;
+}
+
+.fa-solid.fa-2 {
+  color: #e36129;
+  transition: color 0.2s;
+}
+
+.fa-solid.fa-3 {
+  color: #d4cd2f;
+  transition: color 0.2s;
+}
+
+.fa-solid.fa-4 {
+  color: #76c94f;
+  transition: color 0.2s;
+}
+
+.fa-solid.fa-5 {
+  color: #25a007;
+  transition: color 0.2s;
+}
+
 @media screen and (max-width: 768px) {
   /* Zmniejszenie czcionki dla elementów w sekcji .content */
   .exercise_title,
