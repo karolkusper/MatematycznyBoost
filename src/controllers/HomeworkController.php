@@ -105,6 +105,23 @@ class HomeworkController extends AppController
 //
     }
 
+    public function gradeSolution()
+    {
+        // Pobierz dane oceny z żądania POST
+        $solutionId = $_POST['solution_id'];
+        $grade = $_POST['grade'];
+
+        // Tutaj wykonaj odpowiednie operacje, np. zapisz ocenę w bazie danych
+        // ...
+        $homeworkSolutionRepo = new HomeworkSolutionsRepository();
+        $homeworkSolutionRepo->gradeSolution($grade,$solutionId);
+
+
+        // Przekieruj użytkownika z powrotem do widoku zadań
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/teacher_view?student_id=".$_POST['student_id']);
+    }
+
     private function validate(array $file): bool
     {
         if ($file['size'] > self::MAX_FILE_SIZE) {

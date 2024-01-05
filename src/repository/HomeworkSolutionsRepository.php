@@ -52,5 +52,15 @@ class HomeworkSolutionsRepository extends Repository
         }
     }
 
-    //public function gradeSolution(int $grade,int $studentId,$)
+    public function gradeSolution($grade, $solutionId)
+    {
+        try {
+            $stmt = $this->database->connect()->prepare('UPDATE homework_solutions SET grade = ? WHERE solution_id = ?');
+            return $stmt->execute([$grade, $solutionId]);
+        } catch (PDOException $e) {
+            // Obsługa błędów związanych z bazą danych
+            die('Database error: ' . $e->getMessage());
+        }
+    }
+
 }
