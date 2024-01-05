@@ -3,7 +3,9 @@
 require_once 'AppController.php';
 //require_once __DIR__ .'/../models/User.php';
 require_once __DIR__ . '/../models/Homework.php';
+require_once __DIR__ . '/../models/HomeworkSolution.php';
 require_once __DIR__ . '/../repository/HomeworkRepository.php';
+require_once __DIR__ . '/../repository/HomeworkSolutionsRepository.php';
 
 class HomeworkController extends AppController
 {
@@ -15,9 +17,11 @@ class HomeworkController extends AppController
 
     private function isFileUploaded(): bool
     {
-        return isset($user['role']) && isset($user['id'])
-            && $this->isPost() && is_uploaded_file($_FILES['file']['tmp_name'])
+        return  $this->isPost() && is_uploaded_file($_FILES['file']['tmp_name'])
             && $this->validate($_FILES['file']);
+
+        //isset($user['role']) && isset($user['id'])
+        //            &&
     }
 
     public function addExercise()
@@ -29,12 +33,13 @@ class HomeworkController extends AppController
 //            return;
             if($user['role']==="student")
             {
-                $this->render('user_view', ['messages' => ['Session data missing or file not uploaded']]);
+                return $this->render('user_view', ['messages' => ['Session data missing or file not uploaded']]);
             }
             else{
-//                $url = "http://$_SERVER[HTTP_HOST]";
-//                header("Location: {$url}/teacher_view?student_id=".$_POST['student_id']);
-                $this->render('teacher_view', ['messages' => ['Session data missing or file not uploaded']]);
+                echo "if file uploaded zwrocil blad";
+                $url = "http://$_SERVER[HTTP_HOST]";
+                header("Location: {$url}/teacher_view?student_id=".$_POST['student_id']);
+                //return $this->render('teacher_view', ['messages' => ['Session data missing or file not uploaded']]);
             }
 
         }
@@ -75,29 +80,29 @@ class HomeworkController extends AppController
             $url = "http://$_SERVER[HTTP_HOST]";
             header("Location: {$url}/teacher_view?student_id=$assignTo");
         }
-//        else
-//        {
-//            $solutionPath = '/public/uploads/homework_solutions/' . $_FILES['file']['name'];;
-//
-//            $homeworkSolutionRepo = new HomeworkSolutionsRepository();
-//
-//            $success = $homeworkSolutionRepo->addHomeworkSolution(
-//                (int)$user['id'],
-//                (int)$_POST['homework_id'],
-//                $_POST['title'],
-//                $_POST['description'],
-//                $solutionPath
-//            );
-//
-//            if (!$success) {
-//                return $this->render('user_view', ['messages' => ["Error adding solutie to the database"]]);
-//            }
-//
-//            $url = "http://$_SERVER[HTTP_HOST]";
-//            header("Location: {$url}/teacher_view");
-//        }
+        else{
 
-        return $this->render('teacher_view', ['messages' => $this->messages]);
+            $solutionPath = '/public/uploads/homework_solutions/' . $_FILES['file']['name'];;
+
+            $homeworkSolutionRepo = new HomeworkSolutionsRepository();
+
+            $success = $homeworkSolutionRepo->addHomeworkSolution(
+                (int)$user['id'],
+                (int)$_POST['homework_id'],
+                $_POST['title'],
+                $_POST['description'],
+                $solutionPath
+            );
+
+            if (!$success) {
+                return $this->render('user_view', ['messages' => ["Error adding solutie to the database"]]);
+            }
+
+            // Przekieruj do teacher_view w DefaultController
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/user_view");
+        }
+//
     }
 
     private function validate(array $file): bool

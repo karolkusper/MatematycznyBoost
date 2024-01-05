@@ -76,11 +76,19 @@
                         <div class="task_component">
                             <h2>Opis:</h2><?= $homework->getDescription()?>
                         </div>
+                        <?php if(isset($solutions)&&isset($solutions[$homework->getHomeworkId()])): ?>
+                        <div class="task_component">
+                            <h2>Zamieszczono rozwiązanie:</h2>
+                            <i class="fa-solid fa-file-arrow-down"></i>
+                            <a target="_blank" href=<?= $solutions[$homework->getHomeworkId()]->getSolutionPath() ?>><?= $solutions[$homework->getHomeworkId()]->getHomeworkTitle() ?></a>
+                        </div>
+                        <?php else: ?>
                         <div class="task_component">
                             <h2>Zamieszczone rozwiązanie:</h2>
                             <i class="fa-solid fa-file-arrow-down"></i>
+                            Brak rozwiązania
                         </div>
-
+                        <?php endif;?>
                     </div>
                     <div class="grade">
                         <h2>Wystaw ocene:</h2>

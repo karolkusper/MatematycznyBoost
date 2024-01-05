@@ -26,8 +26,11 @@ class DefaultController extends AppController
         $homeworkRepo = new HomeworkRepository();
         $homeworks = $homeworkRepo->getHomeworksOfStudent($user['id']);
 
+        $homeworksSolutionsRepo = new HomeworkSolutionsRepository();
+        $solutions = $homeworksSolutionsRepo->getHomeworkSolutionsOfStudent($user['id']);
+
         // Renderuj widok user_view, przekazując dane użytkownika do widoku
-        $this->render('user_view', ['user' => $user,'homeworks'=>$homeworks]);
+        $this->render('user_view', ['user' => $user,'homeworks'=>$homeworks,'solutions'=>$solutions]);
     }
 
     
@@ -46,8 +49,11 @@ class DefaultController extends AppController
         $homeworkRepo = new HomeworkRepository();
         $homework = $homeworkRepo->getHomeworksOfStudent($studentId);
 
+        $homeworksSolutionsRepo = new HomeworkSolutionsRepository();
+        $solutions = $homeworksSolutionsRepo->getHomeworkSolutionsOfStudent($studentId);
+
         // Renderuj widok user_view, przekazując dane użytkownika do widoku
-        $this->render('teacher_view', ['user' => $user,'student'=>$student,'homeworks'=>$homework]);
+        $this->render('teacher_view', ['user' => $user,'student'=>$student,'homeworks'=>$homework,'solutions'=>$solutions]);
     }
      public function students()
     {
