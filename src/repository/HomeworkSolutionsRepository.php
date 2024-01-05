@@ -36,7 +36,8 @@ class HomeworkSolutionsRepository extends Repository
                     $solution['homework_id'],
                     $solution['homework_title'],
                     $solution['homework_description'],
-                    $solution['solution_path']
+                    $solution['solution_path'],
+                    $solution['grade']
                 );
 
             }
@@ -51,5 +52,5 @@ class HomeworkSolutionsRepository extends Repository
         }
     }
 
-
+    //public function gradeSolution(int $grade,int $studentId,$)
 }

@@ -82,6 +82,17 @@
                             <i class="fa-solid fa-file-arrow-down"></i>
                             <a target="_blank" href=<?= $solutions[$homework->getHomeworkId()]->getSolutionPath() ?>><?= $solutions[$homework->getHomeworkId()]->getHomeworkTitle() ?></a>
                         </div>
+
+                            <div class="grade">
+                                <h2>Wystaw ocene:</h2>
+                                <ul class="grades">
+                                    <li><i class="fa-solid fa-1" id="grade-1"></i></li>
+                                    <li><i class="fa-solid fa-2" id="grade-2"></i></li>
+                                    <li><i class="fa-solid fa-3" id="grade-3"></i></li>
+                                    <li><i class="fa-solid fa-4" id="grade-4"></i></li>
+                                    <li><i class="fa-solid fa-5" id="grade-5"></i></li>
+                                </ul>
+                            </div>
                         <?php else: ?>
                         <div class="task_component">
                             <h2>Zamieszczone rozwiązanie:</h2>
@@ -90,16 +101,7 @@
                         </div>
                         <?php endif;?>
                     </div>
-                    <div class="grade">
-                        <h2>Wystaw ocene:</h2>
-                        <ul class="grades">
-                            <li><i class="fa-solid fa-1" id="grade-1"></i></li>
-                            <li><i class="fa-solid fa-2" id="grade-2"></i></li>
-                            <li><i class="fa-solid fa-3" id="grade-3"></i></li>
-                            <li><i class="fa-solid fa-4" id="grade-4"></i></li>
-                            <li><i class="fa-solid fa-5" id="grade-5"></i></li>
-                        </ul>
-                    </div>
+
                 </div>
             <?php endforeach; ?>
 
