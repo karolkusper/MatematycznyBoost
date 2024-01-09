@@ -37,6 +37,12 @@
     <?php endif; ?>
     <img src="public/img/toDo.png" alt="obrazek_w_tle" class="backgroundImg" />
     <div class="content">
+        <!-- Dodane sprawdzenie i wyświetlanie message -->
+        <?php if (isset($_GET['message'])): ?>
+            <div class="message" style="color:#304341;font-size: 1.5rem;">
+                <?= htmlspecialchars($_GET['message']) ?>
+            </div>
+        <?php endif; ?>
         <?php
         if (isset($homeworks)) {
             foreach ($homeworks as $homework) {

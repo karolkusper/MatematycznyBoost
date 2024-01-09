@@ -48,6 +48,12 @@
                     }
                     ?>
                 </div>
+                <!-- Dodane sprawdzenie i wyświetlanie message -->
+                <?php if (isset($_GET['message'])): ?>
+                    <div class="message" style="color:#304341;font-size: 1.5rem;">
+                        <?= htmlspecialchars($_GET['message']) ?>
+                    </div>
+                <?php endif; ?>
                 <input type="hidden" name="student_id" value="<?= $student->getId() ?>">
                 <!-- Dodaj ukryte pole z id studenta -->
                 <input name="title" type="text" placeholder="Tytuł zadania"/>

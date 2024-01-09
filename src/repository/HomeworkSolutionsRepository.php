@@ -52,6 +52,35 @@ class HomeworkSolutionsRepository extends Repository
         }
     }
 
+    public function getSpecificHomeworkSolutionsOfStudent(int $studentId, String $path)
+    {
+        try {
+            $stmt = $this->database->connect()->prepare('SELECT * FROM homework_solutions WHERE user_id=? AND solution_path=?');
+            $stmt->execute([$studentId, $path]);
+
+            $solution = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($solution) {
+                return new HomeworkSolution(
+                    $solution['solution_id'],
+                    $solution['user_id'],
+                    $solution['homework_id'],
+                    $solution['homework_title'],
+                    $solution['homework_description'],
+                    $solution['solution_path'],
+                    $solution['grade']
+                );
+            } else {
+                // Zwróć null lub inny kod błędu, jeśli nie znaleziono żadnego wyniku
+                return null;
+            }
+        } catch (PDOException $e) {
+            // Obsługa błędów związanych z bazą danych
+            die('Database error: ' . $e->getMessage());
+        }
+    }
+
+
     public function gradeSolution($grade, $solutionId)
     {
         try {

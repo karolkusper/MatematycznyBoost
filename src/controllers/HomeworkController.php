@@ -49,10 +49,14 @@ class HomeworkController extends AppController
 
         //dodac sprawdzenie czy takie zadanie juz nie jest wstawione
 
-        move_uploaded_file(
-            $_FILES['file']['tmp_name'],
-            dirname(__DIR__) . $path . $_FILES['file']['name']
-        );
+        if(!file_exists(dirname(__DIR__) . $path . $_FILES['file']['name']))
+        {
+            move_uploaded_file(
+                $_FILES['file']['tmp_name'],
+                dirname(__DIR__) . $path . $_FILES['file']['name']
+            );
+        }
+
 
         if ($user['role'] === "teacher") {
 
@@ -64,21 +68,34 @@ class HomeworkController extends AppController
             $assignTo = $_POST['student_id'] ?? null;
             $description = $_POST['description'];
 
-            $success = $homeworkRepo->addHomework(
-                (int)$user['id'],
-                (int)$assignTo,
-                $_POST['title'],
-                $description,
-                $taskPath
-            );
+            $homeworkAlreadyExist=$homeworkRepo->getSpecificHomeworkOfStudent($assignTo,$taskPath);
+            if(!$homeworkAlreadyExist)
+            {
+                $success = $homeworkRepo->addHomework(
+                    (int)$user['id'],
+                    (int)$assignTo,
+                    $_POST['title'],
+                    $description,
+                    $taskPath
+                );
 
-            if (!$success) {
-                return $this->render('teacher_view', ['messages' => ["Error adding exercise to the database"]]);
+                if (!$success) {
+                    return $this->render('teacher_view', ['messages' => ["Error adding exercise to the database"]]);
+                }
+
+                // Przekieruj do teacher_view w DefaultController
+                $url = "http://$_SERVER[HTTP_HOST]";
+                header("Location: {$url}/teacher_view?student_id=$assignTo");
+            }
+            else{
+                $message = "Zadanie o tym pliku dla tego ucznia juz istnieje w bazie";
+                // Przekieruj do teacher_view w DefaultController
+                $url = "http://$_SERVER[HTTP_HOST]";
+                //header("Location: {$url}/teacher_view?student_id={$assignTo}&message={$message})");
+                header("Location: {$url}/teacher_view?student_id={$assignTo}&message=" . urlencode($message));
             }
 
-            // Przekieruj do teacher_view w DefaultController
-            $url = "http://$_SERVER[HTTP_HOST]";
-            header("Location: {$url}/teacher_view?student_id=$assignTo");
+
         }
         else{
 
@@ -87,21 +104,32 @@ class HomeworkController extends AppController
 
             $homeworkSolutionRepo = new HomeworkSolutionsRepository();
 
-            $success = $homeworkSolutionRepo->addHomeworkSolution(
-                (int)$user['id'],
-                (int)$_POST['homework_id'],
-                $_POST['title'],
-                $_POST['description'],
-                $solutionPath
-            );
+            $homeworkSolutionAlreadyExist=$homeworkSolutionRepo->getSpecificHomeworkSolutionsOfStudent((int)$user['id'], $solutionPath);
 
-            if (!$success) {
-                return $this->render('user_view', ['messages' => ["Error adding solutie to the database"]]);
+            if(!$homeworkSolutionAlreadyExist)
+            {
+                $success = $homeworkSolutionRepo->addHomeworkSolution(
+                    (int)$user['id'],
+                    (int)$_POST['homework_id'],
+                    $_POST['title'],
+                    $_POST['description'],
+                    $solutionPath
+                );
+
+                if (!$success) {
+                    return $this->render('user_view', ['messages' => ["Error adding solutie to the database"]]);
+                }
+
+                // Przekieruj do teacher_view w DefaultController
+                $url = "http://$_SERVER[HTTP_HOST]";
+                header("Location: {$url}/user_view");
             }
-
-            // Przekieruj do teacher_view w DefaultController
-            $url = "http://$_SERVER[HTTP_HOST]";
-            header("Location: {$url}/user_view");
+            else{
+                $message = "Rozwiązanie o takim pliku zostalo juz umieszczone w bazie w zdaniu ".$homeworkSolutionAlreadyExist->getHomeworkTitle();
+                // Przekieruj do teacher_view w DefaultController
+                $url = "http://$_SERVER[HTTP_HOST]";
+                header("Location: {$url}/user_view?message=" . urlencode($message));
+            }
         }
 
     }
