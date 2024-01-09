@@ -1,2 +1,17 @@
-// zrobic ustawienie student_id po kliknieciu w studenta w zakladce students
-// wyswitlenie zadan konkretnego studenta z bazy danych
+
+
+zrobić sprawdzenie czy dane zadanie nie jest juz wstawione
+
+dodac wybieranie istniejacego zadania z listy zadan
+
+przeniesc dodawanie zadan na prawo strone widoku nauczyciela
+
+POTEM:
+
+    dodac nowa tabele do bazy z kategoriami/działami do ktorych naleza zadania
+
+    sprwdzic czy sessja user jest dostepna w widokach po zalogowaniu, czy trzeaba w ogole wysylac to dodatkowo
+
+    dodac singleton do repository zeby bylo jedno polaczenie z baza
+
+    zrobic czesci wspolne dla kodu
