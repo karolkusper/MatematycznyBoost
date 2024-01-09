@@ -9,8 +9,10 @@ private $homeworkTitle;
 private $homeworkDescription;
 private $solutionPath;
 
+private $grade;
 
-    public function __construct(int $solutionId, int $userId, int $homeworkId, string $homeworkTitle, string $homeworkDescription, string $solutionPath)
+
+    public function __construct(int $solutionId, int $userId, int $homeworkId, string $homeworkTitle, string $homeworkDescription, string $solutionPath, int $grade)
     {
         $this->solutionId = $solutionId;
         $this->userId = $userId;
@@ -18,6 +20,7 @@ private $solutionPath;
         $this->homeworkTitle = $homeworkTitle;
         $this->homeworkDescription = $homeworkDescription;
         $this->solutionPath = $solutionPath;
+        $this->grade=$grade;
     }
 
     public function getSolutionId(): int
@@ -48,6 +51,11 @@ private $solutionPath;
     public function getSolutionPath(): string
     {
         return $this->solutionPath;
+    }
+
+    public function getGrade(): int
+    {
+        return $this->grade;
     }
 
 

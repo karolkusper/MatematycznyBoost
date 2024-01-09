@@ -18,6 +18,7 @@ Routing::get('logout', 'SecurityController');
 Routing::post('login', 'SecurityController');
 Routing::post('register', 'SecurityController');
 Routing::post('addExercise', 'HomeworkController');
+Routing::post('gradeSolution', 'HomeworkController');
 
 
 

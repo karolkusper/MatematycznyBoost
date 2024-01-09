@@ -26,17 +26,18 @@ class HomeworkSolutionsRepository extends Repository
 
             //$result = $stmt->fetchAll(PDO::FETCH_CLASS, 'homework');
 
-            $homeworks = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $solutions = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            foreach ($homeworks as $homework)
+            foreach ($solutions as $solution)
             {
-                $result[]=new HomeworkSolution(
-                    $homework['solution_id'],
-                    $homework['user_id'],
-                    $homework['homework_id'],
-                    $homework['homework_title'],
-                    $homework['homework_description'],
-                    $homework['solution_path']
+                $result[$solution['homework_id']]=new HomeworkSolution(
+                    $solution['solution_id'],
+                    $solution['user_id'],
+                    $solution['homework_id'],
+                    $solution['homework_title'],
+                    $solution['homework_description'],
+                    $solution['solution_path'],
+                    $solution['grade']
                 );
 
             }
@@ -51,5 +52,15 @@ class HomeworkSolutionsRepository extends Repository
         }
     }
 
+    public function gradeSolution($grade, $solutionId)
+    {
+        try {
+            $stmt = $this->database->connect()->prepare('UPDATE homework_solutions SET grade = ? WHERE solution_id = ?');
+            return $stmt->execute([$grade, $solutionId]);
+        } catch (PDOException $e) {
+            // Obsługa błędów związanych z bazą danych
+            die('Database error: ' . $e->getMessage());
+        }
+    }
 
 }
