@@ -27,7 +27,7 @@ class HomeworkController extends AppController
     public function addExercise()
     {
         $user = $_SESSION['user'];
-        if (!$this->isFileUploaded()) {
+        if (!$this->isFileUploaded()&& empty($_POST['homework_select'])) {
             // Dodaj obsługę przypadku, gdy zmienne sesji nie są ustawione
 //            $this->render('teacher_view', ['messages' => ['Session data missing or file not uploaded']]);
 //            return;
@@ -35,32 +35,46 @@ class HomeworkController extends AppController
             {
                 return $this->render('user_view', ['messages' => ['Session data missing or file not uploaded']]);
             }
-            else{
-                echo "if file uploaded zwrocil blad";
+            else {
+                // Przekieruj do teacher_view w DefaultController
                 $url = "http://$_SERVER[HTTP_HOST]";
-                header("Location: {$url}/teacher_view?student_id=".$_POST['student_id']);
-                //return $this->render('teacher_view', ['messages' => ['Session data missing or file not uploaded']]);
+                $message = "File Uploaded lub homework select zwrocil blad ";
+                //header("Location: {$url}/teacher_view?student_id={$assignTo}&message={$message})");
+                header("Location: {$url}/teacher_view?student_id={$_POST['student_id']}&message=" . urlencode($message));
             }
 
         }
 
         $path = $user["role"] === "student" ? self::HOMEWORK_SOLUTIONS_UPLOAD_DIRECTORY : self::HOMEWORK_UPLOAD_DIRECTORY;
 
+        // Sprawdź, czy wybrano opcję z listy
+        if ($_POST['homework_select']) {
+            $selectedHomeworkPath = $path . $_POST['homework_select'];
+        } else {
+            // Wybrano plik z $_FILES
+            $selectedHomeworkPath = $path . $_FILES['file']['name'];
+        }
 
         //dodac sprawdzenie czy takie zadanie juz nie jest wstawione
 
-        if(!file_exists(dirname(__DIR__) . $path . $_FILES['file']['name']))
+        if(!file_exists(dirname(__DIR__) . $selectedHomeworkPath))
         {
             move_uploaded_file(
                 $_FILES['file']['tmp_name'],
-                dirname(__DIR__) . $path . $_FILES['file']['name']
+                dirname(__DIR__) . $selectedHomeworkPath
             );
         }
 
 
         if ($user['role'] === "teacher") {
 
-            $taskPath = '/public/uploads/homework/' . $_FILES['file']['name'];;
+            // Sprawdź, czy wybrano opcję z listy
+            if ($_POST['homework_select']) {
+                $taskPath = '/public/uploads/homework/'. $_POST['homework_select'];
+            } else {
+                // Wybrano plik z $_FILES
+                $taskPath = '/public/uploads/homework/'. $_FILES['file']['name'];
+            }
 
             $homeworkRepo = new HomeworkRepository();
 
