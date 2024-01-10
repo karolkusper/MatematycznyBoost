@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Teacher_view</title>
 
-    <link rel="stylesheet" href="public/css/common_styles.css"/>
-    <link rel="stylesheet" href="public/css/teacher_view.css"/>
+    <link rel="stylesheet" href="/public/css/common_styles.css"/>
+    <link rel="stylesheet" href="/public/css/teacher_view.css"/>
+
 
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -30,7 +31,7 @@
     <?php
     $user = $_SESSION['user'];
     if (isset($user) && isset($student)): ?>
-        <h1 id="title"><?= $user['username'] ?>: Zadania ucznia <?= $student->getUsername() ?></h1>
+        <h1 id="title">Witaj <?= $user['username'] ?>! Oto zadania ucznia: <?= $student->getUsername() ?></h1>
     <?php else: ?>
         <h1 id="title">Zadania ucznia username</h1>
     <?php endif; ?>
@@ -73,20 +74,20 @@
         <?php
         if (isset($homeworks))
             foreach ($homeworks as $homework): ?>
-                <div class="grade_tasks">
+                <div class="task">
                     <form method="POST" action="gradeSolution">
-                        <div class="task">
+
                             <div class="task_component">
                                 <h2>Tytuł:</h2><a target="_blank" href=<?= $homework->getPath() ?>><?= $homework->getTitle() ?></a>
                             </div>
                             <div class="task_component">
-                                <h2>Opis:</h2><?= $homework->getDescription()?>
+                                <h2>Opis:</h2><p><?= $homework->getDescription()?></p>
                             </div>
                             <?php if(isset($solutions) && isset($solutions[$homework->getHomeworkId()])): ?>
                                 <div class="task_component">
                                     <h2>Zamieszczono rozwiązanie:</h2>
-                                    <i class="fa-solid fa-file-arrow-down"></i>
-                                    <a target="_blank" href=<?= $solutions[$homework->getHomeworkId()]->getSolutionPath() ?>><?= $solutions[$homework->getHomeworkId()]->getHomeworkTitle() ?></a>
+
+                                    <a target="_blank" href=<?= $solutions[$homework->getHomeworkId()]->getSolutionPath() ?>> <i class="fa-solid fa-file-arrow-down"></i> <?= $solutions[$homework->getHomeworkId()]->getHomeworkTitle() ?></a>
                                 </div>
                                 <div class="grade">
                                     <?php if ($solutions[$homework->getHomeworkId()]->getGrade() !== 0): ?>
@@ -111,11 +112,9 @@
                             <?php else: ?>
                                 <div class="task_component">
                                     <h2>Zamieszczone rozwiązanie:</h2>
-                                    <i class="fa-solid fa-file-arrow-down"></i>
-                                    Brak rozwiązania
+                                    <p style="color:#cb0202;">Brak rozwiązania!</p>
                                 </div>
                             <?php endif;?>
-                        </div>
                     </form>
                 </div>
             <?php endforeach; ?>

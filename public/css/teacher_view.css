@@ -23,18 +23,21 @@
     #309185 0px 18px 36px -18px inset;
 }
 
-.grade_tasks {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 3vh;
-}
+/*.grade_tasks {*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  justify-content: flex-start;*/
+/*  gap: 3vh;*/
+/*}*/
 
 .task {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   gap: 3vh;
+  background-color: #829bad42;
+  border: 1px dashed #0e4064;
+  padding: 10px;
 }
 
 .task_component {
@@ -51,6 +54,12 @@
 
 .task_component a:hover {
   color: #1b796e;
+}
+
+.task_component p{
+  color:#0e4064;
+  font-size: 1.5rem;
+  margin: 0;
 }
 
 
