@@ -5,23 +5,41 @@
   gap: 2vh;
 }
 
-.upload > input,textarea {
+.upload > input,textarea,select {
   background-color: #829bad;
   color: white;
   border: none;
   padding: 5px 10px;
   border-radius: 15px;
 }
-.upload > input::placeholder {
+.upload > input::placeholder,textarea::placeholder {
   color: white;
   text-align: center;
 }
 
-.upload > input:focus {
+.upload > input:focus,textarea:focus {
   outline: none;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
     #309185 0px 18px 36px -18px inset;
 }
+
+
+
+.upload > button{
+  background-color: #486284;
+  border-radius: 50px;
+  border-style: none;
+  padding: 10px 20px;
+  color: white;
+}
+
+.upload > button:hover{
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+  #309185 0px 18px 36px -18px inset;
+  cursor: pointer;
+}
+
+
 
 /*.grade_tasks {*/
 /*  display: flex;*/

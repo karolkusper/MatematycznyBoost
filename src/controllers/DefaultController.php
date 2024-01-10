@@ -58,10 +58,10 @@ class DefaultController extends AppController
 
 
         // Odczytaj zadania z HOMEWORK_UPLOAD_DIRECTORY
-        $uploadedSolutions = $this->getUploadedSolutions();
+        $uploadedHomeworks = $this->getUploadedHomeworks();
 
         // Renderuj widok teacher_view, przekazując dane użytkownika i zadania
-        $this->render('teacher_view', ['user' => $user, 'student' => $student, 'homeworks' => $homework, 'solutions' => $solutions, 'uploadedSolutions' => $uploadedSolutions]);
+        $this->render('teacher_view', ['user' => $user, 'student' => $student, 'homeworks' => $homework, 'solutions' => $solutions, 'uploadedHomeworks' => $uploadedHomeworks]);
     }
 
     public function getUploadedHomeworks():array

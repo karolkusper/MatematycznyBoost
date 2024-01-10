@@ -59,7 +59,7 @@
                 <!-- Dodaj ukryte pole z id studenta -->
                 <input name="title" type="text" placeholder="Tytuł zadania"/>
                 <textarea name="description" rows="5" placeholder="Opis zadania"></textarea>
-                <input type="file" name="file">
+                <input class="custom-file-input" type="file" name="file">
                 <select name="homework_select">
                     <option value="" selected>Wybierz zadanie (opcjonalnie)</option>
                     <?php if (isset($uploadedHomeworks)) foreach ($uploadedHomeworks as $uploadedHomework): ?>
