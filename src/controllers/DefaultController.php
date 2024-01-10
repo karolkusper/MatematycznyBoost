@@ -1,8 +1,6 @@
 <?php
 
 require_once 'AppController.php';
-const HOMEWORK_UPLOAD_DIRECTORY = '/../public/uploads/homework/';
-
 
 class DefaultController extends AppController
 {
@@ -31,8 +29,11 @@ class DefaultController extends AppController
         $homeworksSolutionsRepo = new HomeworkSolutionsRepository();
         $solutions = $homeworksSolutionsRepo->getHomeworkSolutionsOfStudent($user['id']);
 
+        // Odczytaj zadania z HOMEWORK_UPLOAD_DIRECTORY
+        $uploadedSolutions= $this->getUploadedSolutions();
+
         // Renderuj widok user_view, przekazując dane użytkownika do widoku
-        $this->render('user_view', ['user' => $user,'homeworks'=>$homeworks,'solutions'=>$solutions]);
+        $this->render('user_view', ['user' => $user,'homeworks'=>$homeworks,'solutions'=>$solutions,'uploadedSolutions'=>$uploadedSolutions]);
     }
 
     
@@ -57,10 +58,10 @@ class DefaultController extends AppController
 
 
         // Odczytaj zadania z HOMEWORK_UPLOAD_DIRECTORY
-        $uploadedHomeworks = $this->getUploadedHomeworks();
+        $uploadedSolutions = $this->getUploadedSolutions();
 
         // Renderuj widok teacher_view, przekazując dane użytkownika i zadania
-        $this->render('teacher_view', ['user' => $user, 'student' => $student, 'homeworks' => $homework, 'solutions' => $solutions, 'uploadedHomeworks' => $uploadedHomeworks]);
+        $this->render('teacher_view', ['user' => $user, 'student' => $student, 'homeworks' => $homework, 'solutions' => $solutions, 'uploadedSolutions' => $uploadedSolutions]);
     }
 
     public function getUploadedHomeworks():array
@@ -85,6 +86,31 @@ class DefaultController extends AppController
         }
 
         return $uploadedHomeworks;
+
+    }
+
+    public function getUploadedSolutions():array
+    {
+        $homeworkSolutionDirectory = dirname(__DIR__).HomeworkController::HOMEWORK_SOLUTIONS_UPLOAD_DIRECTORY;
+        $uploadedSolutions=[];
+
+        // Sprawdź, czy katalog istnieje
+        if(file_exists($homeworkSolutionDirectory)&&is_dir($homeworkSolutionDirectory))
+        {
+            // Odczytaj pliki w katalogu
+            $files=scandir($homeworkSolutionDirectory);
+
+            // Usuń katalogi . i ..
+            $files=array_diff($files,['.','..']);
+
+            // Dodaj każdy plik do listy zadań
+            foreach ($files as $file)
+            {
+                $homeworkSolutions[]=$file;
+            }
+        }
+
+        return $homeworkSolutions;
 
     }
      public function students()

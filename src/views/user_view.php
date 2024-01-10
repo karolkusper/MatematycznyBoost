@@ -88,15 +88,16 @@
                             <input name="title" type="text" placeholder="Tytuł rozwiązania" />
                             <textarea name="description" rows="5" placeholder="Opis rozwiązania"></textarea>
                             <input type="file" name="file">
+                            <select name="homework_select">
+                                <option value="" selected>Wybierz zadanie (opcjonalnie)</option>
+                                <?php if (isset($uploadedSolutions)) foreach ($uploadedSolutions as $uploadedSolution): ?>
+                                    <option value="<?= $uploadedSolution ?>"><?= $uploadedSolution ?></option>
+                                <?php endforeach; ?>
+                            </select>
                             <button type="submit">Wyślij plik <i class="fa-solid fa-file-arrow-up"></i></button>
                             <h3>Dodaj plik z zadaniem.</h3>
                         </form>
-                        <select>
-                            <option>ZADANIE 1 -</option>
-                            <option>ZADANIE 1 -</option>
-                            <option>ZADANIE 1 -</option>
-                            <option>ZADANIE 1 -</option>
-                        </select>
+
                     <?php endif; ?>
                 </div>
             <?php } ?>

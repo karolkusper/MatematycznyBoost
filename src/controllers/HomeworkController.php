@@ -33,7 +33,12 @@ class HomeworkController extends AppController
 //            return;
             if($user['role']==="student")
             {
-                return $this->render('user_view', ['messages' => ['Session data missing or file not uploaded']]);
+                //return $this->render('user_view', ['messages' => ['Session data missing or file not uploaded']]);
+                // Przekieruj do teacher_view w DefaultController
+                $url = "http://$_SERVER[HTTP_HOST]";
+                $message = "File Uploaded lub homework select zwrocil blad ";
+                header("Location: {$url}/user_view?message={$message})");
+               // header("Location: {$url}/teacher_view?student_id={$_POST['student_id']}&message=" . urlencode($message));
             }
             else {
                 // Przekieruj do teacher_view w DefaultController
@@ -114,7 +119,13 @@ class HomeworkController extends AppController
         else{
 
 
-            $solutionPath = '/public/uploads/homework_solutions/' . $_FILES['file']['name'];;
+            // Sprawdź, czy wybrano opcję z listy
+            if ($_POST['homework_select']) {
+                $solutionPath = '/public/uploads/homework_solutions/'. $_POST['homework_select'];
+            } else {
+                // Wybrano plik z $_FILES
+                $solutionPath = '/public/uploads/homework_solutions/'. $_FILES['file']['name'];
+            }
 
             $homeworkSolutionRepo = new HomeworkSolutionsRepository();
 
