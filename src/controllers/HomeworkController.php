@@ -125,7 +125,7 @@ class HomeworkController extends AppController
                 header("Location: {$url}/user_view");
             }
             else{
-                $message = "Rozwiązanie o takim pliku zostalo juz umieszczone w bazie w zdaniu ".$homeworkSolutionAlreadyExist->getHomeworkTitle();
+                $message = "Rozwiązanie o takim pliku zostalo juz umieszczone w bazie w zadaniu: ".$homeworkSolutionAlreadyExist->getHomeworkTitle();
                 // Przekieruj do teacher_view w DefaultController
                 $url = "http://$_SERVER[HTTP_HOST]";
                 header("Location: {$url}/user_view?message=" . urlencode($message));

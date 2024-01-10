@@ -1,6 +1,4 @@
 
-zrobić sprawdzenie czy dane zadanie nie jest juz wstawione
-
 dodac wybieranie istniejacego zadania z listy zadan
 
 przeniesc dodawanie zadan na prawo strone widoku nauczyciela
