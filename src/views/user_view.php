@@ -31,7 +31,7 @@
 <script src="public/js/nav_bar.js"></script>
 <div class="container">
     <?php if (isset($user)): ?>
-        <h1 id="title"><?= $user['username'] ?>: Moje zadania</h1>
+        <h1 id="title">Witaj <?= $user['username'] ?>! Twoje zadania:</h1>
     <?php else: ?>
         <h1 id="title">Moje zadania</h1>
     <?php endif; ?>
@@ -47,12 +47,12 @@
         if (isset($homeworks)) {
             foreach ($homeworks as $homework) {
                 ?>
-                <div class="exercise_not_done">
-                    <div class="exercise_title">
+                <div class="homework">
+                    <div class="homework_title">
                         <h2>Tytuł:</h2><a target="_blank" href=<?= $homework->getPath() ?>><?= $homework->getTitle() ?></a>
                     </div>
                     <?php if (isset($solutions) && isset($solutions[$homework->getHomeworkId()])): ?>
-                        <div class="exercise_done">
+                        <div class="solution">
                             <div class="exercise">
                                 <div class="uploaded_file">
                                     <h2>Zamieszczono rozwiązanie:</h2>

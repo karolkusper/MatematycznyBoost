@@ -1,23 +1,23 @@
-.exercise_not_done {
+.homework {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 10px;
   /* padding-left: 10px; */
 }
-.exercise_title {
+.homework_title {
   display: flex;
   justify-content: flex-start;
+  align-items: center;
   gap: 15px;
-  font-size: 1.5em;
 }
 
-.exercise_not_done i {
+.homework i {
   font-size: 2em;
   color: #1b796e;
 }
 
-.exercise_done {
+.solution {
   display: flex;
   justify-content: flex-start;
   gap: 15vw;
@@ -25,11 +25,11 @@
   align-items: center;
 }
 
-.exercise_done h2 {
+.solution h2 {
   color: #0e4064;
   margin: 0;
 }
-.exercise_done h3 {
+.solution h3 {
   color: red;
   margin: 0;
 }
@@ -53,13 +53,13 @@
   gap: 2vh;
 }
 
-.exercise_title a {
+.homework_title a {
   text-decoration: none;
   color: #0e4064;
   font-size: 1.5rem;
 }
 
-.exercise_title a:hover {
+.homework_title a:hover {
   color: #1b796e;
 }
 
@@ -90,12 +90,12 @@
 
 @media screen and (max-width: 768px) {
   /* Zmniejszenie czcionki dla elementów w sekcji .content */
-  .exercise_title,
+  .homework_title,
   .check,
   .upload h2,
   .upload h3,
-  .exercise_done h2,
-  .exercise_done h3 {
+  .solution h2,
+  .solution h3 {
     font-size: 1rem;
   }
 }
