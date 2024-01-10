@@ -1,5 +1,4 @@
 
-dodac wybieranie istniejacego zadania z listy zadan
 
 przeniesc dodawanie zadan na prawo strone widoku nauczyciela
 
