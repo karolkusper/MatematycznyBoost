@@ -1,5 +1,5 @@
 
-
+zrobic czesci wspolne dla kodu
 przeniesc dodawanie zadan na prawo strone widoku nauczyciela
 
 POTEM:
@@ -10,4 +10,3 @@ POTEM:
 
     dodac singleton do repository zeby bylo jedno polaczenie z baza
 
-    zrobic czesci wspolne dla kodu
