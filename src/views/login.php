@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="public/css/login.css" />
+      <link rel="stylesheet" href="/public/css/common_styles.css">
+    <link rel="stylesheet" href="/public/css/login.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -15,7 +16,7 @@
   <body>
     <div class="container">
       <img src="public/img/logo.png" alt="logo" />
-      <img src="public/img/login.png" alt="obrazek" class="obrazek_w_tle" />
+      <img src="public/img/login.png" alt="obrazek" class="backgroundImg" />
 
       <div class="login_box">
         <form class="login" action="login" method="POST">
@@ -30,7 +31,7 @@
                 ?>
             </div>
           <div class="inputs">
-            <input name="email" type="text" placeholder="email" />
+            <input name="email" type="text" placeholder="email"  />
             <input name="password" type="password" placeholder="password" />
           </div>
           <button type="submit" class="Log_in">Log in</button>

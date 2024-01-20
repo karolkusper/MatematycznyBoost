@@ -12,16 +12,7 @@ body {
   align-items: flex-start;
   justify-content: space-between;
   gap: 10vh; /* Zmiana na vh */
-  position: relative;
-  margin: 0 10vw;
-}
-
-.obrazek_w_tle {
-  position: absolute;
-  z-index: -1;
-  top: 2em;
-  right: 2em;
-  opacity: 0.7;
+  margin: 8vh 0 0 25vw;
 }
 
 .login_box {
@@ -35,6 +26,13 @@ body {
 
   font-family: "Poppins", sans-serif;
   font-weight: 600;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.login_box a {
+  text-decoration: none;
+  color: #0e4064;
+  font-size: 1.2rem;
 }
 
 .message{
@@ -69,18 +67,16 @@ form {
   color: white;
 }
 
-/*.inputs input:focus {*/
-/*  outline: none; !* Usunięcie domyślnej obramowania *!*/
-/*  border-style:none;*/
-/*  !*box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, #309185 0px 18px 36px -18px inset;*!*/
-/*}*/
+.inputs input:focus {
+  outline: none;
+}
 
 .Log_in {
   background-color: #304341;
   border-radius: 2em;
   color: white;
   border-style: none;
-  padding: 1em 2em;
+  padding: 10px 20px;
   font-size: 1.75em;
   justify-content: space-evenly;
 }
