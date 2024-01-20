@@ -86,11 +86,13 @@ nav ul li > #Wyloguj:hover {
 }
 
 .backgroundImg {
-  position: absolute;
+  /*position: absolute;*/
+  position: fixed;
   max-width: 60%;
   z-index: -1;
   opacity: 0.5;
-  top: 0;
+  /*top: 0;*/
+  top:15vh;
   right: -100px;
 }
 

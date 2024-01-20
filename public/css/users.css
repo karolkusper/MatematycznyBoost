@@ -1,28 +1,31 @@
 .uczen {
   display: flex;
   justify-content: space-around;
-  /* align-items: center; */
-  background-color: #829bad;
+  background-color: hsl(205, 21%, 59%);
   gap: 5vw;
   padding-right: 10px;
   /* max-width: 70vw; */
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .uczen img {
   max-width: 200px;
-  max-height: auto;
-  display: block;
+  object-fit: cover;
 }
 .info {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   gap: 5vh;
+  color: white;
 }
 
 .info h2 {
-  color: #304341;
+  color: #0e4064;;
 }
-.info h3 {
+.info i{
+  color: white;
+}
+.info i:hover{
   color: white;
 }
 
@@ -31,6 +34,14 @@
   justify-content: flex-start;
   align-items: baseline;
   gap: 5px;
+  /*background-color: #486284;*/
+}
+.dane.zadania a{
+  text-decoration: none;
+  color: #0e4064;;
+}
+.dane.zadania a:hover{
+  color: white;
 }
 
 @media screen and (max-width: 768px) {
