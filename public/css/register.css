@@ -13,16 +13,9 @@ body {
   justify-content: space-between;
   gap: 10vh; /* Zmiana na vh */
   position: relative;
-  margin: 0 10vw;
+  margin: 8vh 0 0 25vw;
 }
 
-.obrazek_w_tle {
-  position: absolute;
-  z-index: -1;
-  top: 2em;
-  right: 2em;
-  opacity: 0.7;
-}
 
 .register_box {
   background-color: #829bad;
@@ -35,6 +28,12 @@ body {
 
   font-family: "Poppins", sans-serif;
   font-weight: 600;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.register_box a{
+  text-decoration: none;
+  color: #0e4064;
+  font-size: 1.2rem;
 }
 
 form {
@@ -60,6 +59,10 @@ form {
   font-weight: 100;
 }
 
+.inputs input:focus {
+  outline: none;
+}
+
 ::placeholder {
   color: white;
 }
@@ -69,7 +72,7 @@ form {
   border-radius: 2em;
   color: white;
   border-style: none;
-  padding: 1em 2em;
+  padding: 10px 20px;
   font-size: 1.75em;
   justify-content: space-evenly;
 }
@@ -108,12 +111,15 @@ form {
 
 /* Media queries dla urządzeń o szerokości ekranu mniejszej niż 768px (mobilne) */
 @media (max-width: 768px) {
+  body{
+    overflow-y: scroll;
+  }
   .obrazek_w_tle {
     display: none; /* Ukryj obrazek w tle */
   }
 
   .container {
-    gap: 15vh;
+    gap: 5vh;
     margin: 5vh 0 0;
     align-items: center;
   }

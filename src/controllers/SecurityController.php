@@ -66,7 +66,7 @@ class SecurityController extends AppController {
         public function register()
     {
         if (!$this->isPost()) {
-            $this->render("register");
+            return $this->render("register");
         }
 
         $username = isset($_POST['username']) ? trim($_POST['username']) : null;
