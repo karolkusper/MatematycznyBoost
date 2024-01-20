@@ -2,11 +2,11 @@
     <img src="public/img/logo.png" alt="logo"/>
     <ul class="buttons">
         <li><a href="#MojProfil">Mój profil</a></li>
-        <li><?= $_SESSION['user']['role'] ?> </li>
         <?php if($_SESSION['user']['role'] === 'teacher'): ?>
             <li><a href="students">Uczniowie</a></li>
+        <? else: ?>
+            <li><a href="user_view">Moje zadania</a></li>
         <?php endif; ?>
-        <li><a href="#Blog">Blog</a></li>
         <li><a href="logout" id="Wyloguj">Wyloguj się</a></li>
     </ul>
     <div class="hamburger">

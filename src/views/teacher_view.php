@@ -77,44 +77,66 @@
                 <div class="task">
                     <form method="POST" action="gradeSolution">
 
+                        <div class="task_component">
+                            <h2>Tytuł:</h2><a target="_blank" href=<?= $homework->getPath() ?>><i
+                                        class="fa-solid fa-file-arrow-down"></i> <?= $homework->getTitle() ?></a>
+                        </div>
+                        <div class="task_component">
+                            <h2>Opis:</h2>
+                            <p><?= $homework->getDescription() ?></p>
+                        </div>
+                        <?php if (isset($solutions) && isset($solutions[$homework->getHomeworkId()])): ?>
                             <div class="task_component">
-                                <h2>Tytuł:</h2><a target="_blank" href=<?= $homework->getPath() ?>><i class="fa-solid fa-file-arrow-down"></i> <?= $homework->getTitle() ?></a>
-                            </div>
-                            <div class="task_component">
-                                <h2>Opis:</h2><p><?= $homework->getDescription()?></p>
-                            </div>
-                            <?php if(isset($solutions) && isset($solutions[$homework->getHomeworkId()])): ?>
-                                <div class="task_component">
-                                    <h2>Zamieszczono rozwiązanie:</h2>
+                                <h2>Zamieszczono rozwiązanie:</h2>
 
-                                    <a target="_blank" href=<?= $solutions[$homework->getHomeworkId()]->getSolutionPath() ?>> <i class="fa-solid fa-file-arrow-down"></i> <?= $solutions[$homework->getHomeworkId()]->getHomeworkTitle() ?></a>
-                                </div>
-                                <div class="grade">
-                                    <?php if ($solutions[$homework->getHomeworkId()]->getGrade() !== 0): ?>
-                                        <!-- Jeśli ocena już istnieje, wyświetl ikonkę oceny -->
-                                        <h2>Wystawiono ocenę:</h2>
-                                        <i class="fa-solid fa-<?= $solutions[$homework->getHomeworkId()]->getGrade() ?>"></i>
-                                    <?php else: ?>
-                                        <!-- Jeśli nie ma oceny, wyświetl formularz -->
-                                        <ul class="grades">
-                                            <li><button type="submit" name="grade" value="1"><i class="fa-solid fa-1" id="grade-1"></i></button></li>
-                                            <li><button type="submit" name="grade" value="2"><i class="fa-solid fa-2" id="grade-2"></i></button></li>
-                                            <li><button type="submit" name="grade" value="3"><i class="fa-solid fa-3" id="grade-3"></i></button></li>
-                                            <li><button type="submit" name="grade" value="4"><i class="fa-solid fa-4" id="grade-4"></i></button></li>
-                                            <li><button type="submit" name="grade" value="5"><i class="fa-solid fa-5" id="grade-5"></i></button></li>
-                                        </ul>
-                                        <input type="hidden" name="solution_id" value="<?= $solutions[$homework->getHomeworkId()]->getSolutionId() ?>">
-                                        <input type="hidden" name="student_id" value="<?= $student->getId() ?>">
-                                    <?php endif; ?>
-                                </div>
-                                <input type="hidden" name="solution_id" value="<?= $solutions[$homework->getHomeworkId()]->getSolutionId() ?>">
-                                <input type="hidden" name="student_id" value="<?= $student->getId() ?>">
-                            <?php else: ?>
-                                <div class="task_component">
-                                    <h2>Zamieszczone rozwiązanie:</h2>
-                                    <p style="color:#cb0202;">Brak rozwiązania!</p>
-                                </div>
-                            <?php endif;?>
+                                <a target="_blank"
+                                   href=<?= $solutions[$homework->getHomeworkId()]->getSolutionPath() ?>> <i
+                                            class="fa-solid fa-file-arrow-down"></i> <?= $solutions[$homework->getHomeworkId()]->getHomeworkTitle() ?>
+                                </a>
+                            </div>
+                            <div class="grade">
+                                <?php if ($solutions[$homework->getHomeworkId()]->getGrade() !== 0): ?>
+                                    <!-- Jeśli ocena już istnieje, wyświetl ikonkę oceny -->
+                                    <h2>Wystawiono ocenę:</h2>
+                                    <i class="fa-solid fa-<?= $solutions[$homework->getHomeworkId()]->getGrade() ?>"></i>
+                                <?php else: ?>
+                                    <!-- Jeśli nie ma oceny, wyświetl formularz -->
+                                    <ul class="grades">
+                                        <li>
+                                            <button type="submit" name="grade" value="1"><i class="fa-solid fa-1"
+                                                                                            id="grade-1"></i></button>
+                                        </li>
+                                        <li>
+                                            <button type="submit" name="grade" value="2"><i class="fa-solid fa-2"
+                                                                                            id="grade-2"></i></button>
+                                        </li>
+                                        <li>
+                                            <button type="submit" name="grade" value="3"><i class="fa-solid fa-3"
+                                                                                            id="grade-3"></i></button>
+                                        </li>
+                                        <li>
+                                            <button type="submit" name="grade" value="4"><i class="fa-solid fa-4"
+                                                                                            id="grade-4"></i></button>
+                                        </li>
+                                        <li>
+                                            <button type="submit" name="grade" value="5"><i class="fa-solid fa-5"
+                                                                                            id="grade-5"></i></button>
+                                        </li>
+                                    </ul>
+                                    <input type="hidden" name="solution_id"
+                                           value="<?= $solutions[$homework->getHomeworkId()]->getSolutionId() ?>">
+                                    <input type="hidden" name="student_id" value="<?= $student->getId() ?>">
+                                <?php endif; ?>
+                            </div>
+                            <input type="hidden" name="solution_id"
+                                   value="<?= $solutions[$homework->getHomeworkId()]->getSolutionId() ?>">
+                            <input type="hidden" name="student_id" value="<?= $student->getId() ?>">
+                        <?php else: ?>
+                            <div class="task_component">
+                                <h2>Zamieszczone rozwiązanie:</h2>
+                                <p style="color:#cb0202;">Brak rozwiązania!</p>
+                            </div>
+                        <?php endif; ?>
                     </form>
                 </div>
             <?php endforeach; ?>

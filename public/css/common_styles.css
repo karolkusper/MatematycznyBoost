@@ -22,7 +22,7 @@ nav {
   position: sticky;
   top: 0px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-evenly;
   gap: 10vw;
   background-color: hsl(205, 21%, 59%);
   z-index: 1;
@@ -192,6 +192,32 @@ h3 {
   color: #309185;
 }
 
+
+
+.fa-solid.fa-1 {
+  color: #ec3131;
+  transition: color 0.2s;
+}
+
+.fa-solid.fa-2 {
+  color: #e36129;
+  transition: color 0.2s;
+}
+
+.fa-solid.fa-3 {
+  color: #f6ef4f;
+  transition: color 0.2s;
+}
+
+.fa-solid.fa-4 {
+  color: #76c94f;
+  transition: color 0.2s;
+}
+
+.fa-solid.fa-5 {
+  color: #25a007;
+  transition: color 0.2s;
+}
 
 @media screen and (max-width: 768px) {
   .backgroundImg {

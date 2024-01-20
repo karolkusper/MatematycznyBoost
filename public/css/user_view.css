@@ -3,6 +3,9 @@
   flex-direction: column;
   justify-content: space-between;
   gap: 10px;
+  background-color: #b5c6d5a1;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   /* padding-left: 10px; */
 }
 .homework_title {
@@ -12,10 +15,6 @@
   gap: 15px;
 }
 
-.homework i {
-  font-size: 2em;
-  color: #1b796e;
-}
 
 .solution {
   display: flex;
@@ -46,6 +45,7 @@
   gap: 1vw;
   align-items: center;
 }
+
 .grade {
   display: flex;
   flex-direction: column;
@@ -54,40 +54,17 @@
   gap: 2vh;
 }
 
-.homework_title a {
+.homework a {
   text-decoration: none;
   color: #0e4064;
   font-size: 1.5rem;
 }
 
-.homework_title a:hover {
+.homework a:hover {
   color: #1b796e;
 }
 
-.fa-solid.fa-1 {
-  color: #ec3131;
-  transition: color 0.2s;
-}
 
-.fa-solid.fa-2 {
-  color: #e36129;
-  transition: color 0.2s;
-}
-
-.fa-solid.fa-3 {
-  color: #d4cd2f;
-  transition: color 0.2s;
-}
-
-.fa-solid.fa-4 {
-  color: #76c94f;
-  transition: color 0.2s;
-}
-
-.fa-solid.fa-5 {
-  color: #25a007;
-  transition: color 0.2s;
-}
 
 @media screen and (max-width: 768px) {
   /* Zmniejszenie czcionki dla elementów w sekcji .content */

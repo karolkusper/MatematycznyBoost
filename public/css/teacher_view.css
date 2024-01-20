@@ -63,27 +63,4 @@
   display: none;
 } */
 
-.fa-solid.fa-1 {
-  color: #ec3131;
-  transition: color 0.2s;
-}
 
-.fa-solid.fa-2 {
-  color: #e36129;
-  transition: color 0.2s;
-}
-
-.fa-solid.fa-3 {
-  color: #f6ef4f;
-  transition: color 0.2s;
-}
-
-.fa-solid.fa-4 {
-  color: #76c94f;
-  transition: color 0.2s;
-}
-
-.fa-solid.fa-5 {
-  color: #25a007;
-  transition: color 0.2s;
-}

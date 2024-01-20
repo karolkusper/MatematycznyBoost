@@ -18,19 +18,7 @@
     <link rel="stylesheet" href="public/css/users.css"/>
 </head>
 <body>
-<nav>
-    <img src="public/img/logo.png" alt="logo"/>
-    <ul class="buttons">
-        <li><a href="#MojProfil">Mój profil</a></li>
-        <li><a href="students">Uczniowie</a></li>
-        <li><a href="#Blog">Blog</a></li>
-        <li><a href="logout" id="Wyloguj">Wyloguj się</a></li>
-    </ul>
-    <div class="hamburger">
-        <i class="fa-solid fa-bars"></i>
-        <i class="fa-solid fa-x" style="display: none"></i>
-    </div>
-</nav>
+<?php include(__DIR__ . "/shared/nav.php"); ?>
 <script src="public/js/nav_bar.js"></script>
 
 <div class="container">
