@@ -116,7 +116,7 @@ h3 {
 }
 .content i {
   font-size: 1.5rem;
-  color: #1b796e;
+  color: #9fb4ca;
 }
 
 #title {
@@ -130,14 +130,15 @@ h3 {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  gap: 5px;
+  gap: 2vh;
   align-items: center;
   background-color: #829bad7c;
   /* background: linear-gradient(to bottom, #829bad7c, rgb(110, 174, 166)); */
   border: 1px dashed #0e4064;
   /* box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
     #309185 0px 18px 36px -18px inset; */
-  padding: 10px 15vw;
+  padding: 10px 10vw;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .upload h2 {
@@ -152,7 +153,10 @@ h3 {
   color: white;
   border: none;
   padding: 5px 10px;
-  border-radius: 15px;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 1.2rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .upload > input::placeholder,textarea::placeholder {
   color: white;
@@ -171,6 +175,7 @@ h3 {
   border-style: none;
   padding: 10px 20px;
   color: white;
+  font-size: 1.2rem;
 }
 
 .upload > button:hover{

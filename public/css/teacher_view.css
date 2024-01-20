@@ -11,9 +11,9 @@
   flex-direction: column;
   justify-content: flex-start;
   gap: 3vh;
-  background-color: #829bad42;
-  border: 1px dashed #0e4064;
+  background-color: #b5c6d5a1;
   padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .task_component {
@@ -74,7 +74,7 @@
 }
 
 .fa-solid.fa-3 {
-  color: #d4cd2f;
+  color: #f6ef4f;
   transition: color 0.2s;
 }
 
@@ -86,13 +86,4 @@
 .fa-solid.fa-5 {
   color: #25a007;
   transition: color 0.2s;
-}
-
-.fa-solid.fa-1:hover,
-.fa-solid.fa-2:hover,
-.fa-solid.fa-3:hover,
-.fa-solid.fa-4:hover,
-.fa-solid.fa-5:hover {
-  filter: brightness(1.2);
-  cursor: pointer;
 }

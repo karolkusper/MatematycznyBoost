@@ -78,7 +78,7 @@
                     <form method="POST" action="gradeSolution">
 
                             <div class="task_component">
-                                <h2>Tytuł:</h2><a target="_blank" href=<?= $homework->getPath() ?>><?= $homework->getTitle() ?></a>
+                                <h2>Tytuł:</h2><a target="_blank" href=<?= $homework->getPath() ?>><i class="fa-solid fa-file-arrow-down"></i> <?= $homework->getTitle() ?></a>
                             </div>
                             <div class="task_component">
                                 <h2>Opis:</h2><p><?= $homework->getDescription()?></p>
