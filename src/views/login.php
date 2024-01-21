@@ -3,6 +3,7 @@
 <head>
     <?php include(__DIR__ . "/shared_login_register/header.php"); ?>
     <title>Login page</title>
+    <script type="text/javascript" src="/public/js/loginEmailValidation.js" defer></script>
 </head>
 <body>
 <div class="container">

@@ -219,6 +219,7 @@ h3 {
   transition: color 0.2s;
 }
 
+
 @media screen and (max-width: 768px) {
   .backgroundImg {
     display: none;

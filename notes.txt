@@ -1,7 +1,4 @@
 
-zrobic czesci wspolne dla kodu
-przeniesc dodawanie zadan na prawo strone widoku nauczyciela
-
 POTEM:
 
     dodac nowa tabele do bazy z kategoriami/działami do ktorych naleza zadania
