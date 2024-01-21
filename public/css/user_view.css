@@ -1,50 +1,12 @@
-.homework {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 10px;
-  background-color: #b5c6d5a1;
-  padding: 10px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  /* padding-left: 10px; */
-}
-.homework_title {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 15px;
-}
-
 
 .solution {
   display: flex;
   justify-content: flex-start;
-  gap: 15vw;
+  gap: 10vw;
   /* padding-left: 10px; */
   align-items: center;
 }
 
-.solution h2 {
-  color: #0e4064;
-  margin: 0;
-}
-.solution h3 {
-  color: red;
-  margin: 0;
-}
-
-.exercise {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 2vh;
-}
-.uploaded_file {
-  display: flex;
-  justify-content: flex-start;
-  gap: 1vw;
-  align-items: center;
-}
 
 .grade {
   display: flex;
@@ -53,17 +15,6 @@
   align-items: center;
   gap: 2vh;
 }
-
-.homework a {
-  text-decoration: none;
-  color: #0e4064;
-  font-size: 1.5rem;
-}
-
-.homework a:hover {
-  color: #1b796e;
-}
-
 
 
 @media screen and (max-width: 768px) {

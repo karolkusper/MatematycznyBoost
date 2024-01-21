@@ -2,22 +2,14 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <?php include(__DIR__ . "/shared/header.php"); ?>
     <title>User_view</title>
-    <link rel="stylesheet" href="public/css/common_styles.css"/>
-    <link rel="stylesheet" href="public/css/user_view.css"/>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;500&family=Poppins:wght@400;600&display=swap"
-          rel="stylesheet"/>
-    <script src="https://kit.fontawesome.com/415b20756c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/public/css/shared/user_view__teacher_view.css">
+    <link rel="stylesheet" href="/public/css/user_view.css"/>
 </head>
 
 <body>
 <?php include(__DIR__ . "/shared/nav.php"); ?>
-<script src="public/js/nav_bar.js"></script>
 <div class="container">
     <?php if (isset($user)): ?>
         <h1 id="title">Witaj <?= $user['username'] ?>! Twoje zadania:</h1>
@@ -36,21 +28,23 @@
         if (isset($homeworks)) {
             foreach ($homeworks as $homework) {
                 ?>
-                <div class="homework">
-                    <div class="homework_title">
+                <div class="task">
+                    <div class="task_component">
                         <h2>Tytuł:</h2><a target="_blank" href=<?= $homework->getPath() ?>>
                             <i class="fa-solid fa-file-arrow-down"></i> <?= $homework->getTitle() ?></a>
                     </div>
+                    <div class="task_component">
+                        <h2>Opis:</h2>
+                        <p><?= $homework->getDescription() ?></p>
+                    </div>
                     <?php if (isset($solutions) && isset($solutions[$homework->getHomeworkId()])): ?>
                         <div class="solution">
-                            <div class="exercise">
-                                <div class="uploaded_file">
+                            <div class="task_component">
                                     <h2>Zamieszczono rozwiązanie:</h2>
                                     <a target="_blank" href=<?= $solutions[$homework->getHomeworkId()]->getSolutionPath() ?>>
                                         <i class="fa-solid fa-file-arrow-down"></i>
                                         <?= $solutions[$homework->getHomeworkId()]->getHomeworkTitle() ?>
                                     </a>
-                                </div>
                             </div>
                             <div class="grade">
                                 <?php if ($solutions[$homework->getHomeworkId()]->getGrade() !== 0): ?>
@@ -63,6 +57,10 @@
                                     <h3>Nie oceniono</h3>
                                 <?php endif; ?>
                             </div>
+                        </div>
+                        <div class="task_component">
+                            <h2>Opis:</h2>
+                            <p><?= $solutions[$homework->getHomeworkId()]->getHomeworkDescription() ?></p>
                         </div>
                     <?php else: ?>
                         <h2>Dodaj swój plik z rozwiązaniem.</h2>
