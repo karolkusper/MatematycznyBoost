@@ -164,7 +164,6 @@ class HomeworkController extends AppController
             }
         }
 
-
     }
 
     public function gradeSolution()
@@ -182,6 +181,12 @@ class HomeworkController extends AppController
         // Przekieruj użytkownika z powrotem do widoku zadań
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/teacher_view?student_id=" . $_POST['student_id']);
+    }
+
+
+    public function search()
+    {
+
     }
 
     private function validate(array $file): bool
