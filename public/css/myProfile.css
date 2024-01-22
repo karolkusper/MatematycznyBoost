@@ -1,0 +1,12 @@
+
+
+img{
+    max-width: 200px;
+    object-fit: cover;
+    border-radius: 25%;
+}
+
+.content{
+    background-color: #829bad;
+    align-items: center;
+}

@@ -124,4 +124,15 @@ class DefaultController extends AppController
 
         $this->render('students',['user' => $user,"students"=>$userRepo->getStudents()]);
     }
+
+    public function myProfile()
+    {
+        // Sprawdź, czy użytkownik jest zalogowany
+        $this->isLoggedIn();
+
+        // Odczytaj dane użytkownika bezpośrednio z sesji
+        $user = $_SESSION['user'];
+
+        $this->render('myProfile',['user'=>$user]);
+    }
 }
