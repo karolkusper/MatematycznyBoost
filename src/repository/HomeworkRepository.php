@@ -88,16 +88,16 @@ class HomeworkRepository extends Repository
     }
 
 
-    public function getHomeworkByTitleOrDesc(string $searchString)
-    {
-        $searchString = '%'.strtolower($searchString).'%';
-        $stmt=$this->database->connect()->prepare('SELECT * FROM homework WHERE LOWER(title) LIKE ? OR LOWER(description) LIKE ?');
-//        $stmt->bindParam(':search', $searchString, PDO::PARAM_STR);
-        $stmt->execute([$searchString]);
-
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    }
+//    public function getHomeworkByTitleOrDesc(string $searchString)
+//    {
+//        $searchString = '%'.strtolower($searchString).'%';
+//        $stmt=$this->database->connect()->prepare('SELECT * FROM homework WHERE LOWER(title) LIKE ? OR LOWER(description) LIKE ?');
+////        $stmt->bindParam(':search', $searchString, PDO::PARAM_STR);
+//        $stmt->execute([$searchString]);
+//
+//        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+//
+//    }
 
 
 }

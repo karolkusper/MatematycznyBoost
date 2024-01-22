@@ -6,6 +6,7 @@
     <title>User_view</title>
     <link rel="stylesheet" href="/public/css/shared/user_view__teacher_view.css">
     <link rel="stylesheet" href="/public/css/user_view.css"/>
+    <script type="text/javascript" src="/public/js/searchHomework.js" defer></script>
 </head>
 
 <body>
@@ -17,6 +18,7 @@
         <h1 id="title">Moje zadania</h1>
     <?php endif; ?>
     <img src="public/img/toDo.png" alt="obrazek_w_tle" class="backgroundImg"/>
+
     <div class="content">
         <!-- Dodane sprawdzenie i wyświetlanie message -->
         <?php if (isset($_GET['message'])): ?>
@@ -24,11 +26,17 @@
                 <?= htmlspecialchars($_GET['message']) ?>
             </div>
         <?php endif; ?>
+
+        <div class="search"><h2>Wyszukaj zadanie:</h2>
+            <input id="search" placeholder="Wyszukaj zadanie..."/>
+        </div>
+        <div class="tasks">
         <?php
         if (isset($homeworks)) {
             foreach ($homeworks as $homework) {
                 ?>
-                <div class="task">
+                <div class="task" data-title="<?= $homework->getTitle() ?>"
+                     data-description="<?= $homework->getDescription() ?>">
                     <div class="task_component">
                         <h2>Tytuł:</h2><a target="_blank" href=<?= $homework->getPath() ?>>
                             <i class="fa-solid fa-file-arrow-down"></i> <?= $homework->getTitle() ?></a>
@@ -91,7 +99,9 @@
                     <?php endif; ?>
                 </div>
             <?php } ?>
+
         <?php } ?>
+
 
     </div>
 </div>

@@ -182,13 +182,6 @@ class HomeworkController extends AppController
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/teacher_view?student_id=" . $_POST['student_id']);
     }
-
-
-    public function search()
-    {
-
-    }
-
     private function validate(array $file): bool
     {
         if ($file['size'] > self::MAX_FILE_SIZE) {
