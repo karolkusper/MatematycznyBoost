@@ -20,7 +20,8 @@ Routing::post('login', 'SecurityController');
 Routing::post('register', 'SecurityController');
 Routing::post('addExercise', 'HomeworkController');
 Routing::post('gradeSolution', 'HomeworkController');
-Routing::post('search','HomeworkController');
+//Routing::post('search','HomeworkController');
+Routing::post('alterProfile','DefaultController');
 
 
 

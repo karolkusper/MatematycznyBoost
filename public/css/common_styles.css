@@ -126,7 +126,7 @@ h3 {
   margin: 5vh 0;
 }
 
-.upload {
+.upload ,.profileForm{
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -156,7 +156,7 @@ h3 {
   gap: 2vh;
   width: 100%;
 }
-#search,.upload > input,textarea,select {
+#search,.upload,.profileForm > input,textarea,select {
   background-color: #829bad;
   color: white;
   border: none;
@@ -166,12 +166,12 @@ h3 {
   font-size: 1.2rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
-#search::placeholder,.upload > input::placeholder,textarea::placeholder {
+#search::placeholder,.upload ,.profileForm> input::placeholder,textarea::placeholder {
   color: white;
   text-align: center;
 }
 
-#search:focus,.upload > input:focus,textarea:focus {
+#search:focus,.upload,.profileForm > input:focus,textarea:focus {
   outline: none;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
   #309185 0px 18px 36px -18px inset;

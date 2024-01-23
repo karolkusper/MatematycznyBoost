@@ -4,6 +4,7 @@
     <?php include(__DIR__ . "/shared/header.php"); ?>
     <title>My profile</title>
     <link rel="stylesheet" href="/public/css/myProfile.css"/>
+    <script type="text/javascript" src="/public/js/alterProfile.js" defer></script>
 </head>
 <body>
     <?php include(__DIR__ . "/shared/nav.php"); ?>
@@ -31,8 +32,23 @@
                 <h2>Username: <?= $user['username'] ?></h2>
                 <h2>Email: <?= $user['email'] ?></h2>
             </div>
-
         </div>
+
+        <div id="resultContainer"></div>
+        <form class="profileForm" id="editProfileForm">
+            <label for="editUsername">Nowa nazwa użytkownika:</label>
+            <input type="text" id="editUsername" name="editUsername">
+
+            <label for="editEmail">Nowy adres email:</label>
+            <input type="email" id="editEmail" name="editEmail">
+
+            <label for="editPassword">Nowe hasło:</label>
+            <input type="password" id="editPassword" name="editPassword">
+
+            <button type="button" onclick="alterProfile()">Zapisz zmiany</button>
+        </form>
     </div>
+
+
 </body>
 </html>

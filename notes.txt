@@ -1,4 +1,14 @@
 
+w myProfile:
+dodac aby formularz zmiany danych pojawil sie tylko gdy klinkiemy odpowiedni przycisk na profilu
+dane zaladowane z php zaladowac do js i po zmianach podmienic
+dodac mozliwosc wstawiania zdjecia profilowego i odpowiednio je nazywac i dodawac do upload
+
+
+opcjonalnie:
+dodac liczenie sredniej ocen, ilosci zadanych zadan domowych, ilosci rozwiazanych zadan itp
+
+
 POTEM:
 
     dodac nowa tabele do bazy z kategoriami/działami do ktorych naleza zadania

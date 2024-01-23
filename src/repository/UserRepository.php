@@ -99,4 +99,34 @@ class UserRepository extends Repository
             die('Database error: ' . $e->getMessage());
         }
     }
+
+    public function alterUserProfile(int $userId, array $postData): bool
+    {
+        try {
+            // Pobierz dane z formularza
+            $newUsername = $postData['username'];
+            $newEmail = $postData['email'];
+            $newPassword = $postData['password'];
+
+            // Sprawdź, czy nowe hasło zostało podane
+            if (!empty($newPassword)) {
+                // Haszuj nowe hasło za pomocą password_hash
+                $hashedPassword = password_hash($newPassword, PASSWORD_BCRYPT);
+
+                // Aktualizuj dane użytkownika w bazie danych, uwzględniając nowe hasło
+                $stmt = $this->database->connect()->prepare('UPDATE users SET username=?, email=?, password_hash=? WHERE user_id=?');
+                $stmt->execute([$newUsername, $newEmail, $hashedPassword, $userId]);
+            } else {
+                // Jeśli nowe hasło nie zostało podane, aktualizuj dane bez zmiany hasła
+                $stmt = $this->database->connect()->prepare('UPDATE users SET username=?, email=? WHERE user_id=?');
+                $stmt->execute([$newUsername, $newEmail, $userId]);
+            }
+
+            return true; // Zwróć true, jeśli aktualizacja zakończy się sukcesem
+        } catch (PDOException $e) {
+            // Obsługa błędów związanych z bazą danych
+            die('Database error: ' . $e->getMessage());
+        }
+    }
+
 }
