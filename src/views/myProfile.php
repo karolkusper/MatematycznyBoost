@@ -9,7 +9,7 @@
     <?php include(__DIR__ . "/shared/nav.php"); ?>
     <div class="container">
         <img
-                src="public/img/teacher.png"
+                src="public/img/myProfile.jpg"
                 alt="obrazek_w_tle"
                 class="backgroundImg"
         />
@@ -25,7 +25,7 @@
             $photoPath = "/public/uploads/usersPhotos/profile{$user['id']}.jpg";
 
             ?>
-            <img src="<?= file_exists($_SERVER['DOCUMENT_ROOT'] . $photoPath) ? $photoPath : '/public/uploads/usersPhotos/default.png' ?>"
+            <img class="profile" src="<?= file_exists($_SERVER['DOCUMENT_ROOT'] . $photoPath) ? $photoPath : '/public/uploads/usersPhotos/default.png' ?>"
                  alt="zdj profilowe"/>
             <div class="user_data">
                 <h2>Username: <?= $user['username'] ?></h2>

@@ -1,6 +1,7 @@
-
-
-img{
+.container{
+    gap:5vh;
+}
+.profile{
     max-width: 200px;
     object-fit: cover;
     border-radius: 25%;
@@ -9,4 +10,26 @@ img{
 .content{
     background-color: #829bad;
     align-items: center;
+    margin-left: 20vw;
+    padding-top: 5vh;
+}
+
+.backgroundImg{
+    opacity: 0.3;
+}
+
+.user_data{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3vh;
+}
+
+
+
+@media screen and (max-width: 768px){
+    .content {
+        align-self: center;
+        margin: 0;
+    }
 }
