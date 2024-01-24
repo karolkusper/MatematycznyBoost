@@ -152,6 +152,7 @@ function cancelEdit() {
 function changeProfilePicture() {
     // Pobierz dane z formularza
     const fileInput = document.getElementById('profilePicture');
+    const resultContainer = document.getElementById('resultContainer');
     const file = fileInput.files[0];
 
     // Utwórz obiekt FormData i dodaj plik
@@ -178,8 +179,10 @@ function changeProfilePicture() {
             // Handle success or failure based on the data received
             // Schowaj formularz po pomyślnym zmienieniu zdjęcia
             document.getElementById('changeProfilePictureForm').style.display = 'none';
+            resultContainer.innerHTML = '<h2>Zaktualizowano zdjęcie. Odśwież stronę aby zobaczyć rezultat.</h2>';
         })
         .catch(error => {
             console.error('Error:', error);
+            resultContainer.innerHTML = '<h2>Zmiana zdjęcia nie udała się (zły format lub za duży plik). Spróbuj ponownie.</h2>';
         });
 }
