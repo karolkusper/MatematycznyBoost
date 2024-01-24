@@ -32,11 +32,17 @@
                 <img class="profilePic" src="<?= file_exists($_SERVER['DOCUMENT_ROOT'] . $photoPath) ? $photoPath : '/public/uploads/usersPhotos/default.png' ?>"
                      alt="zdj profilowe"/>
 
-                <form class="profileForm" id="changeProfilePictureForm" enctype="multipart/form-data">
-                    <label for="profilePicture">Zmień zdjęcie profilowe:</label>
-                    <input class="custom-file-input" type="file" id="profilePicture" name="profilePicture">
-                    <button type="button" onclick="changeProfilePicture()">Zmień</button>
-                </form>
+<!--                <form class="profileForm" id="changeProfilePictureForm" enctype="multipart/form-data">-->
+<!--                    <label for="profilePicture">Zmień zdjęcie profilowe:</label>-->
+<!--                    <input class="custom-file-input" type="file" id="profilePicture" name="profilePicture">-->
+<!--                    <button type="button" onclick="changeProfilePicture()">Zmień</button>-->
+<!--                    <button type="button" id="cancelChangePicture">Anuluj</button>-->
+<!--                </form>-->
+
+
+                <div id="changeProfilePicture}">
+                    <button type="button" id="changeProfilePicture">Zmień zdjęcie profilowe</button>
+                </div>
 
                 <div class="user_data">
                     <h2>Username: <?= $user['username'] ?></h2>
@@ -47,21 +53,31 @@
                     <button type="button">Zmień dane profilu</button>
                 </div>
             </div>
+            <div class="formContainer">
+                <div class="myProfileForm">
+                    <form class="profileForm" id="changeProfilePictureForm" enctype="multipart/form-data">
+                        <label for="profilePicture">Zmień zdjęcie profilowe:</label>
+                        <input class="custom-file-input" type="file" id="profilePicture" name="profilePicture">
+                        <button type="button" onclick="changeProfilePicture()">Zmień</button>
+                        <button type="button" id="cancelChangePicture">Anuluj</button>
+                    </form>
+                </div>
+                <div class="myProfileForm"><form class="profileForm" id="editProfileForm">
+                        <label for="editUsername">Nowa nazwa użytkownika:</label>
+                        <input type="text" id="editUsername" name="editUsername">
 
+                        <label for="editEmail">Nowy adres email:</label>
+                        <input type="email" id="editEmail" name="editEmail">
 
-            <form class="profileForm" id="editProfileForm">
-                <label for="editUsername">Nowa nazwa użytkownika:</label>
-                <input type="text" id="editUsername" name="editUsername">
+                        <label for="editPassword">Nowe hasło:</label>
+                        <input type="password" id="editPassword" name="editPassword">
 
-                <label for="editEmail">Nowy adres email:</label>
-                <input type="email" id="editEmail" name="editEmail">
+                        <button type="button" onclick="alterProfile()">Zapisz zmiany</button>
+                        <button type="button" onclick="cancelEdit()">Anuluj</button>
+                    </form>
+                </div>
+            </div>
 
-                <label for="editPassword">Nowe hasło:</label>
-                <input type="password" id="editPassword" name="editPassword">
-
-                <button type="button" onclick="alterProfile()">Zapisz zmiany</button>
-                <button type="button" onclick="cancelEdit()">Anuluj</button>
-            </form>
         </div>
         </div>
 

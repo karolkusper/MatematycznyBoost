@@ -2,14 +2,28 @@ document.addEventListener('DOMContentLoaded', function () {
     // Ukryj formularz na początku
     const editProfileForm = document.getElementById('editProfileForm');
 
-
+    // Ukryj formularz na początku
     editProfileForm.style.display = 'none';
+    
+    document.getElementById('changeProfilePictureForm').style.display = 'none';
 
     // Obsługa naciśnięcia przycisku "Zmień dane profilu"
     document.getElementById('changeProfileData').addEventListener('click', function () {
         // Pokaż formularz po naciśnięciu przycisku
         editProfileForm.style.display = 'flex';
     });
+
+    document.getElementById('changeProfilePicture').addEventListener('click', function () {
+        // Pokaż formularz po naciśnięciu przycisku
+        document.getElementById('changeProfilePictureForm').style.display = 'flex';
+    });
+
+// Dodaj obsługę zdarzeń dla przycisku "Anuluj" w formularzu zmiany zdjęcia
+    document.getElementById('cancelChangePicture').addEventListener('click', function () {
+        // Schowaj formularz po naciśnięciu przycisku "Anuluj"
+        document.getElementById('changeProfilePictureForm').style.display = 'none';
+    });
+
 
     // Obsługa naciśnięcia przycisku "Zapisz zmiany"
     document.getElementById('saveChanges').addEventListener('click', alterProfile);
@@ -135,7 +149,6 @@ function cancelEdit() {
     editProfileForm.style.display = 'none';
 }
 
-
 function changeProfilePicture() {
     // Pobierz dane z formularza
     const fileInput = document.getElementById('profilePicture');
@@ -144,6 +157,7 @@ function changeProfilePicture() {
     // Utwórz obiekt FormData i dodaj plik
     const formData = new FormData();
     formData.append('file', file);
+
 
     // Wyślij żądanie AJAX za pomocą Fetch API
     fetch('/changeProfilePicture', {
@@ -162,6 +176,8 @@ function changeProfilePicture() {
         .then(data => {
             console.log(data);
             // Handle success or failure based on the data received
+            // Schowaj formularz po pomyślnym zmienieniu zdjęcia
+            document.getElementById('changeProfilePictureForm').style.display = 'none';
         })
         .catch(error => {
             console.error('Error:', error);
