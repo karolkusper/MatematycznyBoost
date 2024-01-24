@@ -41,7 +41,7 @@
 
 
                 <div id="changeProfilePicture}">
-                    <button type="button" id="changeProfilePicture">Zmień zdjęcie profilowe</button>
+                    <button type="button" id="changeProfilePicture" class="profileButton">Zmień zdjęcie profilowe</button>
                 </div>
 
                 <div class="user_data">
@@ -50,7 +50,7 @@
                 </div>
 
                 <div id="changeProfileData">
-                    <button type="button">Zmień dane profilu</button>
+                    <button type="button" class="profileButton">Zmień dane profilu</button>
                 </div>
             </div>
             <div class="formContainer">
@@ -58,8 +58,8 @@
                     <form class="profileForm" id="changeProfilePictureForm" enctype="multipart/form-data">
                         <label for="profilePicture">Zmień zdjęcie profilowe:</label>
                         <input class="custom-file-input" type="file" id="profilePicture" name="profilePicture">
-                        <button type="button" onclick="changeProfilePicture()">Zmień</button>
-                        <button type="button" id="cancelChangePicture">Anuluj</button>
+                        <button type="button" onclick="changeProfilePicture()" class="profileButton">Zmień</button>
+                        <button type="button" id="cancelChangePicture" class="profileButton">Anuluj</button>
                     </form>
                 </div>
                 <div class="myProfileForm"><form class="profileForm" id="editProfileForm">
@@ -72,8 +72,8 @@
                         <label for="editPassword">Nowe hasło:</label>
                         <input type="password" id="editPassword" name="editPassword">
 
-                        <button type="button" onclick="alterProfile()">Zapisz zmiany</button>
-                        <button type="button" onclick="cancelEdit()">Anuluj</button>
+                        <button type="button" onclick="alterProfile()" class="profileButton">Zapisz zmiany</button>
+                        <button type="button" onclick="cancelEdit()" class="profileButton">Anuluj</button>
                     </form>
                 </div>
             </div>

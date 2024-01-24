@@ -62,7 +62,7 @@
                                 <?php else: ?>
                                     <!-- Jeśli nie ma oceny, pozostaw komunikat "Nie oceniono" -->
                                     <h2>Ocena:</h2>
-                                    <h3>Nie oceniono</h3>
+                                    <h2>Nie oceniono</h2>
                                 <?php endif; ?>
                             </div>
                         </div>
