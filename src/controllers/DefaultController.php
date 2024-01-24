@@ -158,4 +158,17 @@ class DefaultController extends AppController
             echo json_encode(['status' => 'error', 'message' => 'Failed to update profile']);
         }
     }
+
+    public function updateSession()
+    {
+        // Odczytaj dane z ciała żądania
+        $data = json_decode(file_get_contents('php://input'), true);
+
+// Zaktualizuj sesję użytkownika
+        $_SESSION['user']['username'] = $data['newUsername'];
+        $_SESSION['user']['email'] = $data['newEmail'];
+
+// Odpowiedź do klienta
+        echo json_encode(['status' => 'success']);
+    }
 }

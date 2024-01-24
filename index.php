@@ -22,6 +22,7 @@ Routing::post('addExercise', 'HomeworkController');
 Routing::post('gradeSolution', 'HomeworkController');
 //Routing::post('search','HomeworkController');
 Routing::post('alterProfile','DefaultController');
+Routing::post('updateSession','DefaultController');
 
 
 

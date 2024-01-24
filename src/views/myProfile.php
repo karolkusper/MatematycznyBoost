@@ -15,11 +15,12 @@
                 class="backgroundImg"
         />
         <?php
-//        $user = $_SESSION['user'];
         if (isset($user)): ?>
-            <h1 id="title">Witaj <?= $user['username'] ?>! Oto Twój profil:</h1>
+        <div id="Title"><h1 id="title">Witaj <?= $user['username'] ?>! Oto Twój profil:</h1></div>
+
         <?php else: ?>
-            <h1 id="title">Mój profil</h1>
+            <div id="Title"><h1 id="title">Witaj username! Oto Twój profil:</h1></div>
+
         <?php endif; ?>
         <div id="resultContainer"></div>
         <div class="profile">
