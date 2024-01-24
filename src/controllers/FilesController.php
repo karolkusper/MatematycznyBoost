@@ -7,7 +7,7 @@ require_once __DIR__ . '/../models/HomeworkSolution.php';
 require_once __DIR__ . '/../repository/HomeworkRepository.php';
 require_once __DIR__ . '/../repository/HomeworkSolutionsRepository.php';
 
-class HomeworkController extends AppController
+class FilesController extends AppController
 {
     private $messages = [];
     const MAX_FILE_SIZE = 1024 * 1024;
@@ -28,7 +28,7 @@ class HomeworkController extends AppController
     public function addExercise()
     {
         $user = $_SESSION['user'];
-        if (!$this->isFileUploaded() && empty($_POST['homework_select']) ) {
+        if (!$this->isFileUploaded() && empty($_POST['homework_select'])) {
             // Dodaj obsługę przypadku, gdy zmienne sesji nie są ustawione
 //            $this->render('teacher_view', ['messages' => ['Session data missing or file not uploaded']]);
 //            return;
@@ -47,8 +47,7 @@ class HomeworkController extends AppController
                 header("Location: {$url}/teacher_view?student_id={$_POST['student_id']}&message=" . urlencode($message));
             }
 
-        } elseif (empty($_POST['title'])||empty($_POST['description']))
-        {
+        } elseif (empty($_POST['title']) || empty($_POST['description'])) {
             $message = "Tytuł i opis muszą być wypełnione!";
             if ($user['role'] === "student") {
 
@@ -60,9 +59,7 @@ class HomeworkController extends AppController
                 $url = "http://$_SERVER[HTTP_HOST]";
                 header("Location: {$url}/teacher_view?student_id={$_POST['student_id']}&message=" . urlencode($message));
             }
-        }
-
-        else {
+        } else {
             $path = $user["role"] === "student" ? self::HOMEWORK_SOLUTIONS_UPLOAD_DIRECTORY : self::HOMEWORK_UPLOAD_DIRECTORY;
 
             // Sprawdź, czy wybrano opcję z listy
@@ -73,8 +70,8 @@ class HomeworkController extends AppController
                 $selectedHomeworkPath = $path . $_FILES['file']['name'];
             }
 
-            //dodac sprawdzenie czy takie zadanie juz nie jest wstawione
 
+            //przenoszenie pliku do uploads
             if (!file_exists(dirname(__DIR__) . $selectedHomeworkPath)) {
                 move_uploaded_file(
                     $_FILES['file']['tmp_name'],
@@ -83,6 +80,7 @@ class HomeworkController extends AppController
             }
 
 
+            //zapis pliku do bazy danych
             if ($user['role'] === "teacher") {
 
                 // Sprawdź, czy wybrano opcję z listy
@@ -120,10 +118,8 @@ class HomeworkController extends AppController
                     $message = "Zadanie o tym pliku dla tego ucznia juz istnieje w bazie";
                     // Przekieruj do teacher_view w DefaultController
                     $url = "http://$_SERVER[HTTP_HOST]";
-                    //header("Location: {$url}/teacher_view?student_id={$assignTo}&message={$message})");
                     header("Location: {$url}/teacher_view?student_id={$assignTo}&message=" . urlencode($message));
                 }
-
 
             } else {
 
@@ -173,8 +169,7 @@ class HomeworkController extends AppController
         $solutionId = $_POST['solution_id'];
         $grade = $_POST['grade'];
 
-        // Tutaj wykonaj odpowiednie operacje, np. zapisz ocenę w bazie danych
-        // ...
+
         $homeworkSolutionRepo = new HomeworkSolutionsRepository();
         $homeworkSolutionRepo->gradeSolution($grade, $solutionId);
 
@@ -196,15 +191,12 @@ class HomeworkController extends AppController
             // Ustaw ścieżkę do zapisania pliku
             $photoPath = $path . "profile{$user['id']}.jpg";
 
-//            if (!file_exists(dirname(__DIR__) . $photoPath)) {
-            // Przesuń przesłany plik do docelowej lokalizacji
+
             $success = move_uploaded_file(
                 $_FILES['file']['tmp_name'],
                 dirname(__DIR__) . $photoPath
             );
-//            }
 
-            // Odpowiedź na żądanie (możesz użyć JSON lub innego formatu)
             if ($success) {
                 echo json_encode(['status' => 'success', 'message' => 'Zdjęcie profilowe zostało zaktualizowane.']);
             } else {

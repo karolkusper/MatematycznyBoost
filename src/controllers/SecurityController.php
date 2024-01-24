@@ -1,20 +1,13 @@
 <?php
 
 require_once 'AppController.php';
-require_once __DIR__."/../models/User.php";
-require_once __DIR__.'/../repository/UserRepository.php';
-require_once __DIR__.'/../../Routing.php';
+require_once __DIR__ . "/../models/User.php";
+require_once __DIR__ . '/../repository/UserRepository.php';
+require_once __DIR__ . '/../../Routing.php';
 
 
-class SecurityController extends AppController {
-
-//    private $userRepository;
-//    public function __construct()
-//    {
-//        $this->userRepository=new userRepository();
-//    }
-
-
+class SecurityController extends AppController
+{
 
     public function login()
     {
@@ -25,8 +18,7 @@ class SecurityController extends AppController {
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        $userRepository=new userRepository();
-//        $loggedInUser = $this->userRepository->getUserByEmail($email);
+        $userRepository = new userRepository();
         $loggedInUser = $userRepository->getUserByEmail($email);
 
         if (!$loggedInUser) {
@@ -42,28 +34,21 @@ class SecurityController extends AppController {
             'id' => $loggedInUser->getId(),
             'email' => $loggedInUser->getEmail(),
             'username' => $loggedInUser->getUsername(),
-            'role'=>$loggedInUser->getRole()
-            // Dodaj inne informacje o użytkowniku, które chcesz przechowywać w sesji
+            'role' => $loggedInUser->getRole()
         ];
 
 
-        if($loggedInUser->getRole()==="student")
-        {
+        if ($loggedInUser->getRole() === "student") {
             $url = "http://$_SERVER[HTTP_HOST]";
             header("Location: {$url}/user_view");
-        }
-        else{
-//            $url = "http://$_SERVER[HTTP_HOST]";
-//            header("Location: {$url}/teacher_view");
-            // Przed zwróceniem widoku teacher_view
-            //return $this->render('teacher_view', ['user' => $_SESSION['user']]);
-            return $this->render('students', ["user" => $_SESSION['user'],"students"=>$userRepository->getStudents()]);
+        } else {
+            return $this->render('students', ["user" => $_SESSION['user'], "students" => $userRepository->getStudents()]);
         }
 
     }
 
 
-        public function register()
+    public function register()
     {
         if (!$this->isPost()) {
             return $this->render("register");
@@ -84,13 +69,11 @@ class SecurityController extends AppController {
         }
 
         //check if user with this email already exists
-        $userRepository=new userRepository();
-        $userExists=$userRepository->getUserByEmail($email);
-        if($userExists)
-        {
-            return $this->render('register',['messages'=>["User with this email already exists!"]]);
+        $userRepository = new userRepository();
+        $userExists = $userRepository->getUserByEmail($email);
+        if ($userExists) {
+            return $this->render('register', ['messages' => ["User with this email already exists!"]]);
         }
-
 
 
         $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
@@ -104,7 +87,8 @@ class SecurityController extends AppController {
     }
 
 
-    public function logout() {
+    public function logout()
+    {
         // Zakończ sesję
         session_unset();
         session_destroy();
@@ -113,8 +97,6 @@ class SecurityController extends AppController {
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/index");
         exit();
-
-        //sprobowac zwykle return this->render(login)
     }
 
 }

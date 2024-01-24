@@ -47,10 +47,6 @@
                             <i class="fa-solid fa-list-check"></i>
                             <h2><a href="teacher_view?student_id=<?= $student->getId() ?>">Zadania ucznia</a></h2>
                         </div>
-<!--                        <div class="dane usunUcznia">-->
-<!--                            <i class="fa-solid fa-user-xmark"></i>-->
-<!--                            <h2>Usuń ucznia</h2>-->
-<!--                        </div>-->
                     </div>
                 </div>
             <?php endforeach; ?>

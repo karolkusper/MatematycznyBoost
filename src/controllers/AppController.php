@@ -1,6 +1,7 @@
 <?php
 
-class AppController{
+class AppController
+{
     private $request;
 
     public function __construct()
@@ -19,16 +20,15 @@ class AppController{
     }
 
 
-    protected function render(string $template = null,array $variables=[])
+    protected function render(string $template = null, array $variables = [])
     {
-        $templatePath = 'src/views/'.$template.'.php';
+        $templatePath = 'src/views/' . $template . '.php';
         $output = 'File not found';
 
-        if(file_exists($templatePath))
-        {
+        if (file_exists($templatePath)) {
             extract($variables);
 
-            ob_start(); 
+            ob_start();
             include $templatePath;
             $output = ob_get_clean();
         }
@@ -41,12 +41,8 @@ class AppController{
         // Sprawdź, czy użytkownik jest zalogowany
         if (!isset($_SESSION['user'])) {
             // Jeśli użytkownik nie jest zalogowany, przekieruj na stronę logowania
-//            $url = "http://$_SERVER[HTTP_HOST]";
-//            header("Location: {$url}/login");
-//            exit();
             return $this->render("login");
         }
     }
-
 
 }
