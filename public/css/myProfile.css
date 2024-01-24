@@ -35,6 +35,11 @@
     justify-content: space-between;
 }
 
+#resultContainer{
+    margin: 0;
+    color: #0e4064;
+}
+
 
 @media screen and (max-width: 768px){
     .content {
