@@ -134,3 +134,36 @@ function cancelEdit() {
     // Schowaj formularz po naciśnięciu przycisku "Anuluj"
     editProfileForm.style.display = 'none';
 }
+
+
+function changeProfilePicture() {
+    // Pobierz dane z formularza
+    const fileInput = document.getElementById('profilePicture');
+    const file = fileInput.files[0];
+
+    // Utwórz obiekt FormData i dodaj plik
+    const formData = new FormData();
+    formData.append('file', file);
+
+    // Wyślij żądanie AJAX za pomocą Fetch API
+    fetch('/changeProfilePicture', {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+        },
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+            // Handle success or failure based on the data received
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}

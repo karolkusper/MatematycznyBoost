@@ -31,6 +31,13 @@
                 ?>
                 <img class="profilePic" src="<?= file_exists($_SERVER['DOCUMENT_ROOT'] . $photoPath) ? $photoPath : '/public/uploads/usersPhotos/default.png' ?>"
                      alt="zdj profilowe"/>
+
+                <form class="profileForm" id="changeProfilePictureForm" enctype="multipart/form-data">
+                    <label for="profilePicture">Zmień zdjęcie profilowe:</label>
+                    <input class="custom-file-input" type="file" id="profilePicture" name="profilePicture">
+                    <button type="button" onclick="changeProfilePicture()">Zmień</button>
+                </form>
+
                 <div class="user_data">
                     <h2>Username: <?= $user['username'] ?></h2>
                     <h2>Email: <?= $user['email'] ?></h2>

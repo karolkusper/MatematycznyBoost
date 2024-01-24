@@ -14,6 +14,7 @@ class HomeworkController extends AppController
     const SUPPORTED_TYPES = ['image/png', 'image/jpeg', '.pdf', '.txt'];
     const HOMEWORK_UPLOAD_DIRECTORY = '/../public/uploads/homework/';
     const HOMEWORK_SOLUTIONS_UPLOAD_DIRECTORY = '/../public/uploads/homework_solutions/';
+    const PICTURES_UPLOAD_DIRECTORY = '/../public/uploads/usersPhotos/';
 
     private function isFileUploaded(): bool
     {
@@ -182,6 +183,36 @@ class HomeworkController extends AppController
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/teacher_view?student_id=" . $_POST['student_id']);
     }
+
+
+    public function changeProfilePicture()
+    {
+        $user = $_SESSION['user'];
+
+        // Sprawdź, czy plik został przesłany
+        if ($this->isFileUploaded()) {
+            $path = self::PICTURES_UPLOAD_DIRECTORY;
+
+            // Ustaw ścieżkę do zapisania pliku
+            $photoPath = $path . "profile{$user['id']}.jpg";
+
+//            if (!file_exists(dirname(__DIR__) . $photoPath)) {
+            // Przesuń przesłany plik do docelowej lokalizacji
+            $success = move_uploaded_file(
+                $_FILES['file']['tmp_name'],
+                dirname(__DIR__) . $photoPath
+            );
+//            }
+
+            // Odpowiedź na żądanie (możesz użyć JSON lub innego formatu)
+            if ($success) {
+                echo json_encode(['status' => 'success', 'message' => 'Zdjęcie profilowe zostało zaktualizowane.']);
+            } else {
+                echo json_encode(['status' => 'error', 'message' => 'Błąd podczas przesyłania pliku']);
+            }
+        }
+    }
+
     private function validate(array $file): bool
     {
         if ($file['size'] > self::MAX_FILE_SIZE) {
