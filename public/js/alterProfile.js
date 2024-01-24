@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Ukryj formularz na początku
     editProfileForm.style.display = 'none';
-    
+
     document.getElementById('changeProfilePictureForm').style.display = 'none';
 
     // Obsługa naciśnięcia przycisku "Zmień dane profilu"
@@ -34,8 +34,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // Funkcja do wczytywania danych użytkownika do kontenera
 
 
-
 });
+
 function loadUserData(username, email) {
     // Pobierz dane z diva o klasie "content"
     const photoPath = document.querySelector('.profilePic').src;
@@ -62,7 +62,7 @@ function updateSession(newUsername, newEmail) {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ newUsername, newEmail }),
+        body: JSON.stringify({newUsername, newEmail}),
     })
         .then(response => response.json())
         .then(data => {
@@ -128,7 +128,7 @@ function alterProfile() {
                     // Możesz użyć odpowiednich funkcji do wczytania i wyświetlenia danych na nowo
 
                     // Po zaktualizowaniu danych, wczytaj ponownie dane użytkownika
-                    loadUserData(username,email);
+                    loadUserData(username, email);
 
                     // Zaktualizuj sesję użytkownika
                     updateSession(username, email);
