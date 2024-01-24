@@ -2,7 +2,7 @@
 
 // UserRepository.php
 require_once 'Repository.php';
-require_once __DIR__.'/../models/User.php';
+require_once __DIR__ . '/../models/User.php';
 
 class UserRepository extends Repository
 {
@@ -46,30 +46,28 @@ class UserRepository extends Repository
     }
 
 
-    public function getStudents(){
-        try{
-            $result=[];
+    public function getStudents()
+    {
+        try {
+            $result = [];
             $stmt = $this->database->connect()->prepare('SELECT * FROM users WHERE role=?');
             $stmt->execute(["student"]);
 
             $students = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            foreach ($students as $student)
-            {
-                $result[]=new User(
+            foreach ($students as $student) {
+                $result[] = new User(
                     $student['user_id'],
                     $student['email'],
                     $student['password_hash'],
                     $student['username'],
                     $student['role']
-                    );
+                );
             }
 
             return $result;
 
-        }
-        catch(PDOException $e)
-        {
+        } catch (PDOException $e) {
             // Obsługa błędów związanych z bazą danych
             die('Database error: ' . $e->getMessage());
         }
