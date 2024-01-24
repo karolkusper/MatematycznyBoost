@@ -12,12 +12,6 @@ Students after login get access to their homeworks and can send solution back to
 - [Introduction](#introduction)
 - [Features](#features)
 - [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
-- [Acknowledgments](#acknowledgments)
 
 ## Introduction
 If you conduct online classes and seek a user-friendly application for efficiently managing your students and assignments, then this webpage is tailored for you!
@@ -32,9 +26,10 @@ Key features of this project:
 
 ## Getting Started
 
-Provide instructions on how to get started with your project. This typically includes details about prerequisites and installation.
+1. Clone this repository: https://github.com/karolkusper/MatematycznyBoost
+2. Build the docker image:
+docker build .
+3. Run docker compose:
+docker-compose up -d
 
-### Prerequisites
-
-List any software or dependencies that users need to have installed before using your project.
 
