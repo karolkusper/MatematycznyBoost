@@ -26,6 +26,10 @@ Key features of this project:
 
 ## ScreenShots
 
+Database ERD:
+![diagram_bazy](https://github.com/karolkusper/MatematycznyBoost/assets/101508798/d5ab7fed-885a-4f74-84f7-ec05965ccdb6)
+
+
 Login page:
 ![image](https://github.com/karolkusper/MatematycznyBoost/assets/101508798/08dc1071-bb00-41a0-8ddb-a8f55aa4d5b8)
 
