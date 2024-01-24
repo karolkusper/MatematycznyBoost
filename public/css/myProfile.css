@@ -1,7 +1,7 @@
 .container{
     gap:5vh;
 }
-.profile{
+.profilePic{
     max-width: 200px;
     object-fit: cover;
     border-radius: 25%;
@@ -10,10 +10,14 @@
 .content{
     background-color: #829bad;
     align-items: center;
-    margin-left: 20vw;
+    margin-left: 0;
     padding-top: 5vh;
 }
-
+.profile{
+    display: flex;
+    justify-content: flex-start;
+    gap: 3vw;
+}
 .backgroundImg{
     opacity: 0.3;
 }
@@ -31,5 +35,8 @@
     .content {
         align-self: center;
         margin: 0;
+    }
+    .profile{
+        flex-direction: column;
     }
 }

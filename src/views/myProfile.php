@@ -21,34 +21,41 @@
         <?php else: ?>
             <h1 id="title">Mój profil</h1>
         <?php endif; ?>
-        <div class="content">
-            <?
-            $photoPath = "/public/uploads/usersPhotos/profile{$user['id']}.jpg";
-
-            ?>
-            <img class="profile" src="<?= file_exists($_SERVER['DOCUMENT_ROOT'] . $photoPath) ? $photoPath : '/public/uploads/usersPhotos/default.png' ?>"
-                 alt="zdj profilowe"/>
-            <div class="user_data">
-                <h2>Username: <?= $user['username'] ?></h2>
-                <h2>Email: <?= $user['email'] ?></h2>
-            </div>
-        </div>
-
         <div id="resultContainer"></div>
-        <form class="profileForm" id="editProfileForm">
-            <label for="editUsername">Nowa nazwa użytkownika:</label>
-            <input type="text" id="editUsername" name="editUsername">
+        <div class="profile">
+            <div class="content">
+                <?
+                $photoPath = "/public/uploads/usersPhotos/profile{$user['id']}.jpg";
 
-            <label for="editEmail">Nowy adres email:</label>
-            <input type="email" id="editEmail" name="editEmail">
+                ?>
+                <img class="profilePic" src="<?= file_exists($_SERVER['DOCUMENT_ROOT'] . $photoPath) ? $photoPath : '/public/uploads/usersPhotos/default.png' ?>"
+                     alt="zdj profilowe"/>
+                <div class="user_data">
+                    <h2>Username: <?= $user['username'] ?></h2>
+                    <h2>Email: <?= $user['email'] ?></h2>
+                </div>
 
-            <label for="editPassword">Nowe hasło:</label>
-            <input type="password" id="editPassword" name="editPassword">
+                <div id="changeProfileData">
+                    <button type="button">Zmień dane profilu</button>
+                </div>
+            </div>
 
-            <button type="button" onclick="alterProfile()">Zapisz zmiany</button>
-        </form>
-    </div>
 
+            <form class="profileForm" id="editProfileForm">
+                <label for="editUsername">Nowa nazwa użytkownika:</label>
+                <input type="text" id="editUsername" name="editUsername">
+
+                <label for="editEmail">Nowy adres email:</label>
+                <input type="email" id="editEmail" name="editEmail">
+
+                <label for="editPassword">Nowe hasło:</label>
+                <input type="password" id="editPassword" name="editPassword">
+
+                <button type="button" onclick="alterProfile()">Zapisz zmiany</button>
+                <button type="button" onclick="cancelEdit()">Anuluj</button>
+            </form>
+        </div>
+        </div>
 
 </body>
 </html>
